@@ -19,7 +19,7 @@ if(isset($_POST['actualizarDatos'])){
 } else  {
     $alumno = Alumno::getById($id);
     if ($alumno) {
-        require_once __DIR__ .'/../Views/editarAlumno.view.php';
+        require_once __DIR__ .'/../Views/alumnos/editarAlumno.view.php';
     }
 }
 

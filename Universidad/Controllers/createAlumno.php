@@ -22,4 +22,4 @@ if(isset($_POST['enviarFormulario'])){
     echo "No se presionó el botón de enviar formulario";
 }
 
-require_once __DIR__ .'/../Views/createAlumno.view.php';
+require_once __DIR__ .'/../Views/alumnos/createAlumno.view.php';

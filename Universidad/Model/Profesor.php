@@ -41,4 +41,18 @@ class Profesor extends Conexion {
         $profesor = $valorDb->fetch_object(Profesor::class);
         return $profesor;
     }
+
+    public function delete() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "DELETE FROM profesores WHERE id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+    }
+
+    public function update() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "UPDATE profesores SET nombre = ?, apellido = ?, materia_id = ? WHERE id = ?");
+        $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->materia_id, $this->id);
+        $pre->execute();
+    }
 }
