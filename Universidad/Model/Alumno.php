@@ -5,13 +5,22 @@ require_once 'Materia.php';
 
 class Alumno extends Conexion {
 
-    public $id, $nombre, $apellido, $fecha_nacimiento;
+    public $id, $nombre, $apellido, $fecha_nacimiento, $materias_id;
 
     public function create() {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?)");
         $pre->bind_param("sss", $this->nombre, $this->apellido, $this->fecha_nacimiento);
         $pre->execute();
+
+        $alumno_id = mysqli_insert_id($this->con);
+
+        foreach ($this->materias_id as $materia_id) {
+            $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
+            $pre->bind_param("ii", $alumno_id, $materia_id);
+            $pre->execute();
+        }
+
     }
 
     public static function all() {
@@ -64,6 +73,15 @@ class Alumno extends Conexion {
             $materias[] = $materia;
         }
         return $materias;
+    }
+
+    public static function alumno_materia($id) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT materia.nombre FROM materias INNER JOIN alumno_materia ON materias_id = alumno_materia.materia_id WHERE alumno_id = $id");
+        $result->execute();
+        return $result->get_result();
+         
     }
 
 }

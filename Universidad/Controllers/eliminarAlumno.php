@@ -8,7 +8,7 @@ $alumno = Alumno::getById($id);
 
 if ($alumno) {
     $alumno->delete();
-    header('Location: ../Controllers/indexAlumno.php');
+    header('Location: ../indexAlumno.php');
 }
 
 

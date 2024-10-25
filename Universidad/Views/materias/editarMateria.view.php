@@ -22,35 +22,21 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3>Crear Alumno</h3>
+                        <h3>Editar Materia - ID: <?= $materia->id ?></h3>
                     </div>
                     <div class="card-body">
 
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control">
+                                <input type="text" value="<?= $materia->nombre ?>" name="nombre" id="nombre" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="apellido">Apellido</label>
-                                <input type="text" name="apellido" id="apellido" class="form-control">
+                                <label for="tipo_materia_id">Tipo</label>
+                                <input type="text" value="<?= $materia->tipo_materia_id ?>" name="tipo_materia_id" id="tipo_materia_id" class="form-control">
                             </div>
-                            <div class="form-group" id="fecha_nacimiento">
-                                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
-                            </div>
-
-                            <div class="form-group" id="">
-                            <?php
-                            foreach ($materias as $materia) {
-                                echo "<label><input type='checkbox' name='materia_id[]' id='materia_id' value='$materia->id'>$materia->nombre</label>";
-                            }
-                            ?>
-                            </div>
-
-
-                            <button type="submit" name="enviarFormulario" class="btn btn-primary">
-                                <i class="fas fa fa-send">Enviar</i>
+                            <button type="submit" name="actualizarDatos" class="btn btn-primary">
+                                <i class="fas fa fa-send">Actualizar</i>
                             </button>
 
                         </form>

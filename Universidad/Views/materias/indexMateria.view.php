@@ -29,17 +29,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="createAlumno.php" class="btn btn-success float-right">Agregar Alumno</a>
-                        <h2 class="pull-left">Lista de Usuarios</h2>
+                        <a href="createMateria.php" class="btn btn-success float-right">Agregar Materia</a>
+                        <h2 class="pull-left">Lista de Materias</h2>
                     </div>
-                    <table id="listaAlumnos" class="table table-sm table-striped table-bordered" style="width:100%">
+                    <table id="listaMaterias" class="table table-sm table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Fecha Nacimiento</th>
-                                <th>Materias</th>
+                                <th>Tipo</th>
                                 <th>Acciones</th>
 
                             </tr>
@@ -48,25 +46,15 @@
 
                             <?php
 
-                            foreach ($alumnos as $alumno) { ?>
+                            foreach ($materias as $materia) { ?>
                                 <tr>
-                                    <td><?= $alumno->id; ?></td>
-                                    <td><?= $alumno->nombre; ?></td>
-                                    <td><?= $alumno->apellido; ?></td>
-                                    <td><?= date('d/m/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
-                                    <td><?php
-
-                                        $materias = $alumno->materias();
-
-                                        foreach ($materias as $materia) {
-                                            echo $materia->nombre . '<br>';
-                                        }?>
-                                     
-                                    </td>
+                                    <td><?= $materia->id; ?></td>
+                                    <td><?= $materia->nombre; ?></td>
+                                    <td><?= $materia->tipo_materia_id; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="editarAlumno.php?id=<?= $alumno->id; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                            <a href="eliminarAlumno.php?id=<?= $alumno->id; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                            <a href="editarMateria.php?id=<?= $materia->id; ?>" class="btn btn-warning btn-sm">Editar</a>
+                                            <a href="eliminarMateria.php?id=<?= $materia->id; ?>" class="btn btn-danger btn-sm">Eliminar</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -79,9 +67,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Fecha Nacimiento</th>
-                                <th>Materias</th>
+                                <th>Tipo</th>
                                 <th>Acciones</th>
                             </tr>
                         </tfoot>
@@ -93,7 +79,7 @@
 </body>
 <script>
     $(document).ready(function() {
-        $('#listaAlumnos').DataTable({});
+        $('#listaMaterias').DataTable({});
     });
 </script>
 

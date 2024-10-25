@@ -6,12 +6,12 @@ require_once 'Profesor.php';
 
 class Materia extends Conexion {
 
-    public $id, $nombre;
+    public $id, $nombre, $tipo_materia_id;
 
     public function create() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "INSERT INTO materias (nombre) VALUES (?)");
-        $pre->bind_param("s", $this->nombre);
+        $pre = mysqli_prepare($this->con, "INSERT INTO materias (nombre, tipo_materia_id) VALUES (?, ?)");
+        $pre->bind_param("si", $this->nombre, $this->tipo_materia_id);
         $pre->execute();
     }
 
@@ -68,6 +68,29 @@ class Materia extends Conexion {
         }
 
         return $alumnos;
+    }
+
+    public function delete() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "DELETE FROM materias WHERE id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+    }
+
+    public function update() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "UPDATE materias SET nombre = ?, tipo_materia_id = ? WHERE id = ?");
+        $pre->bind_param("sii", $this->nombre, $this->tipo_materia_id, $this->id);
+        $pre->execute();
+    }
+
+    public static function alumno_materia($id) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT materia_id FROM alumno_materia WHERE id = $id");
+        $result->execute();
+        return $result->get_result();
+         
     }
 
 }
