@@ -15,7 +15,7 @@ if(isset($_POST['actualizarDatos'])){
     $alumno->fecha_nacimiento = $fecha_nacimiento;
     $alumno->update();
 
-    header('Location: ../Controllers/indexAlumno.php');
+    header('Location: ../indexAlumno.php');
 } else  {
     $alumno = Alumno::getById($id);
     if ($alumno) {

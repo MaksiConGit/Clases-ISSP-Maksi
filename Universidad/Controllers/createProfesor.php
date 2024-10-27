@@ -12,6 +12,9 @@ if(isset($_POST['enviarFormulario'])){
     $profesor->apellido = $apellido;
     $profesor->materia_id = $materia_id;
     $profesor->create();
+
+    header('Location: ../indexProfesor.php');
+
 } else {
     echo "No se presionó el botón de enviar formulario";
 }

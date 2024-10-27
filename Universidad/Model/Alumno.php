@@ -48,7 +48,12 @@ class Alumno extends Conexion {
     }
 
     public function delete() {
+
         $this->conectar();
+        $pre = mysqli_prepare($this->con, "DELETE FROM alumno_materia WHERE alumno_id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+
         $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id = ?");
         $pre->bind_param("i", $this->id);
         $pre->execute();

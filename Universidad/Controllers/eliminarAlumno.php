@@ -10,6 +10,3 @@ if ($alumno) {
     $alumno->delete();
     header('Location: ../indexAlumno.php');
 }
-
-
-echo $id;
