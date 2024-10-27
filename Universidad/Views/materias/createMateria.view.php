@@ -32,9 +32,16 @@
                                 <input type="text" name="nombre" id="nombre" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="apellido">Tipo</label>
-                                <input type="text" name="tipo_materia_id" id="tipo_materia_id" class="form-control">
+                                <label for="tipo_materia_id">Tipo de Materia</label>
+                                <select class="form-control" name="tipo_materia_id" id="tipo_materia_id">
+                                        <option disabled selected hidden value="">Seleccione un tipo de materia</option>
+                                        <?php foreach ($tipos_materias as $tipo_materia) { ?>
+                                            <option value="<?= $tipo_materia->id ?>"><?= $tipo_materia->tipo_materia ?></option>
+                                        <?php } ?>
+                                </select>
                             </div>
+
+
                             <button type="submit" name="enviarFormulario" class="btn btn-primary">
                                 <i class="fas fa fa-send">Enviar</i>
                             </button>

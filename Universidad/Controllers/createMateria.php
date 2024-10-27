@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__ .'/../Model/Materia.php';
+require_once __DIR__ .'/../Model/TipoMateria.php';
+
+$tipos_materias = TipoMateria::all();
 
 if(isset($_POST['enviarFormulario'])){
     $nombre = $_POST['nombre'];
