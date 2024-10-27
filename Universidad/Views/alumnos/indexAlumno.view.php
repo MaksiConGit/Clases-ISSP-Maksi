@@ -28,6 +28,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div>
+                        <span>Alumnos | </span>
+                        <a href="../indexProfesor.php">Profesores</a><span> | </span>
+                        <a href="../indexMateria.php">Materias</a>
+                    </div>
                     <div class="page-header clearfix">
                         <a href="createAlumno.php" class="btn btn-success float-right">Agregar Alumno</a>
                         <h2 class="pull-left">Lista de Usuarios</h2>

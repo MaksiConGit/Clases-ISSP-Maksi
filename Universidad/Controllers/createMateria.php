@@ -16,9 +16,6 @@ if(isset($_POST['enviarFormulario'])){
     $materia->create();
 
     header('Location: ../indexMateria.php');
-
-} else {
-    echo "No se presionó el botón de enviar formulario";
 }
 
 require_once __DIR__ .'/../Views/materias/createMateria.view.php';

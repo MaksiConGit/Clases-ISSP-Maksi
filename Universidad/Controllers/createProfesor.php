@@ -15,8 +15,6 @@ if(isset($_POST['enviarFormulario'])){
 
     header('Location: ../indexProfesor.php');
 
-} else {
-    echo "No se presionó el botón de enviar formulario";
 }
 
 $materias = Materia::all();

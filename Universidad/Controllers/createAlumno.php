@@ -20,8 +20,6 @@ if(isset($_POST['enviarFormulario'])){
 
     header('Location: ../indexAlumno.php');
     
-} else {
-    echo "No se presionó el botón de enviar formulario";
 }
 
 require_once __DIR__ .'/../Views/alumnos/createAlumno.view.php';
