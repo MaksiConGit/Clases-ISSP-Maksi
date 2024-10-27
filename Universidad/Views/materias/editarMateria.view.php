@@ -32,8 +32,16 @@
                                 <input type="text" value="<?= $materia->nombre ?>" name="nombre" id="nombre" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="tipo_materia_id">Tipo</label>
-                                <input type="text" value="<?= $materia->tipo_materia_id ?>" name="tipo_materia_id" id="tipo_materia_id" class="form-control">
+                                <label for="tipo_materia_id">Tipo de Materia</label>
+                                <select class="form-control" name="tipo_materia_id" id="tipo_materia_id">
+
+                                <?php foreach ($tipos_materias as $tipo_materia) { ?>
+                                    <option value="<?= $tipo_materia->id ?>" <?= ($tipo_materia->id == $materia->tipo_materia_id) ? 'selected' : '' ?>>
+                                        <?= $tipo_materia->tipo_materia ?>
+                                    </option>
+                                <?php } ?>
+
+                                </select>
                             </div>
                             <button type="submit" name="actualizarDatos" class="btn btn-primary">
                                 <i class="fas fa fa-send">Actualizar</i>
