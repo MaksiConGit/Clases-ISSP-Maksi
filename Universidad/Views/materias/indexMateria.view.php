@@ -50,7 +50,8 @@
                                 <tr>
                                     <td><?= $materia->id; ?></td>
                                     <td><?= $materia->nombre; ?></td>
-                                    <td><?= $materia->tipo_materia_id; ?></td>
+                                    <td><?= $materia->tipoMateria(); ?></td>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="editarMateria.php?id=<?= $materia->id; ?>" class="btn btn-warning btn-sm">Editar</a>

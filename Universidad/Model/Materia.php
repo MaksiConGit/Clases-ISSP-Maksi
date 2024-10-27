@@ -93,4 +93,16 @@ class Materia extends Conexion {
          
     }
 
+    public function tipoMateria() {
+        $this->conectar();
+        
+        $result = mysqli_prepare($this->con, "SELECT tipos_materias.tipo_materia FROM tipos_materias INNER JOIN materias ON materias.tipo_materia_id = tipos_materias.id WHERE materias.id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+            $tipo_materia = $valoresDb->fetch_object();
+        return $tipo_materia ? $tipo_materia->tipo_materia : null;
+    }
+    
+
 }
