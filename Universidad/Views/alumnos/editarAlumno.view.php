@@ -39,6 +39,27 @@
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                 <input type="date" value="<?= $alumno->fecha_nacimiento ?>" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                             </div>
+                            <div class="form-group" id="">
+
+                            <?php
+                            
+                            $alumno_materias = $alumno->materias();
+
+                            foreach ($materias as $materia) { 
+
+                                $tiene_materia = false;
+                                
+                                foreach ($alumno_materias as $alumno_materia) { 
+                                    ($materia->id == $alumno_materia->id) ? $tiene_materia = true : ''; 
+                                }
+                                ?>
+
+                                <label><input type='checkbox' name='materia_id[]' id='materia_id' <?= $tiene_materia ? 'checked' : '' ?> value='<?= $materia->id ?>'><?= $materia->nombre ?></label>
+
+
+                            <?php } ?>
+
+                            <br>
                             <button type="submit" name="actualizarDatos" class="btn btn-primary">
                                 <i class="fas fa fa-send">Actualizar</i>
                             </button>

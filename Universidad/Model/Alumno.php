@@ -64,7 +64,33 @@ class Alumno extends Conexion {
         $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, fecha_nacimiento = ? WHERE id = ?");
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id);
         $pre->execute();
+    
+        // Obtener las materias actuales del alumno en un array
+        $materias_actuales = [];
+        $result = mysqli_query($this->con, "SELECT materia_id FROM alumno_materia WHERE alumno_id = $this->id");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $materias_actuales[] = $row['materia_id'];
+        }
+    
+        // Recorrer las materias seleccionadas para agregar las nuevas y mantener las existentes
+        foreach ($this->materias_id as $materia_id) {
+            if (!in_array($materia_id, $materias_actuales)) {
+                $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
+                $pre->bind_param("ii", $this->id, $materia_id);
+                $pre->execute();
+            }
+        }
+    
+        // Eliminar las materias que ya no están seleccionadas
+        foreach ($materias_actuales as $materia_id_actual) {
+            if (!in_array($materia_id_actual, $this->materias_id)) {
+                $pre = mysqli_prepare($this->con, "DELETE FROM alumno_materia WHERE alumno_id = ? AND materia_id = ?");
+                $pre->bind_param("ii", $this->id, $materia_id_actual);
+                $pre->execute();
+            }
+        }
     }
+    
 
     public function materias() {
         $this->conectar();

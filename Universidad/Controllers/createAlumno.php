@@ -18,9 +18,8 @@ if(isset($_POST['enviarFormulario'])){
     $alumno->materias_id = $materias_id;
     $alumno->create();
 
-    // echo "Nombre: $nombre, Apellido: $apellido, Fecha de Nacimiento: $fecha_nacimiento";
-
-    // echo "Se presionó el botón de enviar formulario";
+    header('Location: ../indexAlumno.php');
+    
 } else {
     echo "No se presionó el botón de enviar formulario";
 }
