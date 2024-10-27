@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ .'/../Model/Materia.php';
+require_once __DIR__ .'/../Model/Profesor.php';
 
 $id = $_GET['id'];
 
@@ -9,16 +10,18 @@ if(isset($_POST['actualizarDatos'])){
     $apellido = $_POST['apellido'];
     $materia_id = $_POST['materia_id'];
 
-    $materia = Materia::getById($id);
-    $materia->nombre = $nombre;
-    $materia->materia_id = $materia_id;
-    $materia->update();
+    $profesor = Profesor::getById($id);
+    $profesor->nombre = $nombre;
+    $profesor->materia_id = $materia_id;
+    $profesor->update();
 
-    header('Location: ../Controllers/indexMateria.php');
+    header('Location: ../indexProfesor.php');
 } else  {
-    $materia = Materia::getById($id);
-    if ($materia) {
-        require_once __DIR__ .'/../Views/profesores/editarMateria.view.php';
+    $profesor = Profesor::getById($id);
+    $materias = Materia::all();
+    
+    if ($profesor) {
+        require_once __DIR__ .'/../Views/profesores/editarProfesor.view.php';
     }
 }
 
