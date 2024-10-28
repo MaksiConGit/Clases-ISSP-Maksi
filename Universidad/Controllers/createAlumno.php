@@ -8,6 +8,7 @@ $nombre = "";
 $apellido = "";
 $fecha_nacimiento = "";
 $materias_id = "";
+$errores = [];
 
 $materias = Materia::all();
 
