@@ -29,8 +29,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div>
-                        <a href="../indexAlumno.php">Alumnos | </a>
-                        <a href="../indexProfesor.php">Profesores | </a>
+                        <a href="../indexAlumno.php">Alumnos</a><span> | </span>
+                        <a href="../indexProfesor.php">Profesores</a><span> | </span>
                         <span>Materias</span>
                     </div>
                     <div class="page-header clearfix">
