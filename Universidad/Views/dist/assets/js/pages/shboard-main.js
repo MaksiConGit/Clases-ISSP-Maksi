@@ -22,7 +22,7 @@ function floatchart() {
                 width: 2,
             },
             series: [{
-                data: [0, 20, 10, 45, 30, 55, 20, 30, 0]
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
             }],
             tooltip: {
                 fixed: {

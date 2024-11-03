@@ -25056,7 +25056,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
     margin: 0;
 }
 
-.flat-card .row-table:first-child {
+.flat-card .row-table {
     border-bottom: 1px solid #ddd;
 }
 

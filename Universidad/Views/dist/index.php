@@ -22,6 +22,10 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="../Views/dist/assets/css/style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <!-- Cargar ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     
     
 
@@ -153,8 +157,11 @@
                 <div class="container d-flex align-items-center justify-content-center col-12">
 
                     <div class="col-md-12 col-xl-4 col-12">
-                        <div class="card flat-card" style="height: 13rem; overflow-y: auto;">
+
+                        <div class="card flat-card">
+
                             <div class="row-table">
+
                                 <div class="col-sm-6 card-body br">
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -170,6 +177,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-sm-6 card-body">
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -184,9 +192,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-                            <div class="row-table">
+
+                            <div class="row-table br">
+
                                 <div class="col-sm-6 card-body br">
+
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <!-- <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
@@ -200,9 +212,11 @@
                                             <span>Materias</span>
                                         </div>
                                     </div>
+
                                 </div>
                                 
                                 <div class="col-sm-6 card-body">
+
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <!-- <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i> -->
@@ -217,8 +231,50 @@
                                     </div>
                                 
                                 </div>
+
+                                
                             </div>
+
+                            <div class="row-table">
+
+                                <div class="col-sm-6 card-body br">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <!-- <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                                              -->
+                                              <div class="col-auto p-r-0">
+                                                <img src="../Views/dist/assets/images/question.png" alt="user image" class="wid-40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 text-md-center">
+                                            <h5><?= count($alumnos) ?></h5>
+                                            <span>Alumnos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6 card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <!-- <i class="icon feather icon-music text-c-red mb-1 d-block"></i> -->
+                                            <div class="col-auto p-r-0">
+                                                <img src="../Views/dist/assets/images/writing.png" alt="user image" class="wid-40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 text-md-center">
+                                            <h5><?=count($profesores)?></h5>
+                                            <span>Profesores</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                           
+
                         </div>
+                        
+                        
                         <!-- widget primary card start -->
 
 
@@ -252,13 +308,69 @@
                         </div>
                     </div>
 
-                    <div class="card support-bar overflow-hidden col-xl-4 col-md-12" style="height: 13rem; overflow-y: auto;">
-                        <div class="card-body pb-0">
-                            <h2 class="m-0"><?=count($notas)?></h2>
+                    <div class="card support-bar overflow-hidden col-xl-4 col-md-12">
+                        <div class="card-header">
+                            <h5 class="">Promedio general de notas</h4>
+                        </div>
+                        <!-- <div class="card-body pb-0">
+                            <h2 class="m-0"></h2>
                             <span class="text-c-blue">Notas</span>
                             <p class="mb-3 mt-3">Promedio general de notas.</p>
-                        </div>
-                        <div id="support-chart"></div>
+                        </div> -->
+
+                        <script>
+                        'use strict';
+                        $(document).ready(function() {
+                            setTimeout(function() {
+                                floatchart();
+                            }, 100);
+                        });
+
+                        function floatchart() {
+                            var options1 = {
+                                chart: {
+                                    type: 'area',
+                                    height: 200,
+                                    sparkline: {
+                                        enabled: false // Desactivar para mostrar el eje X completo con los meses
+                                    }
+                                },
+                                colors: ["#1abc9c"],
+                                stroke: {
+                                    curve: 'smooth',
+                                    width: 2,
+                                },
+                                series: [{
+                                    name: "Promedio",
+                                    data: [10, 9, 8.65, 4.1, 9, 8.43, 9.44, 7, 5.9, 8.43, 9.76, 10] // Datos para cada mes
+                                }],
+                                xaxis: {
+                                    categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                                    labels: {
+                                        rotate: -45 // Rota los nombres de los meses para una mejor visualización
+                                    }
+                                },
+                                tooltip: {
+                                    x: {
+                                        format: 'MMM' // Formato de los meses en el tooltip
+                                    },
+                                    y: {
+                                        title: {
+                                            formatter: function() {
+                                                return 'Promedio: ';
+                                            }
+                                        }
+                                    }
+                                }
+                            };
+
+                            var chart = new ApexCharts(document.querySelector("#support-chart"), options1);
+                            chart.render();
+                        }
+                    </script>
+
+                    <div id="support-chart"></div>
+
                     </div>
 
                     <!-- <div class="col-md-12 col-xl-4 ">
