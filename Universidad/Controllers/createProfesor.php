@@ -26,7 +26,7 @@ if(isset($_POST['enviarFormulario'])){
         $profesor->materia_id = $materia_id;
         $profesor->create();
 
-        header('Location: ../indexProfesor.php');
+        header('Location: indexProfesor.php');
     }
 
 

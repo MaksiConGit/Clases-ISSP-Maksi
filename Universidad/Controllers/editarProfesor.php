@@ -32,7 +32,7 @@ if(isset($_POST['actualizarDatos'])){
         $profesor->materia_id = $materia_id;
         $profesor->update();
 
-        header('Location: ../indexProfesor.php');
+        header('Location: indexProfesor.php');
     }
 }
 

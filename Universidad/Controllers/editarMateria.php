@@ -31,7 +31,7 @@ if(isset($_POST['actualizarDatos'])){
         $materia->tipo_materia_id = $tipo_materia_id;
         $materia->update();
 
-        header('Location: ../indexMateria.php');
+        header('Location: indexMateria.php');
     }
 }
 

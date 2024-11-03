@@ -27,7 +27,7 @@ if(isset($_POST['enviarFormulario'])){
 
         $materia->create();
 
-        header('Location: ../indexMateria.php');
+        header('Location: indexMateria.php');
     }
 }
 
