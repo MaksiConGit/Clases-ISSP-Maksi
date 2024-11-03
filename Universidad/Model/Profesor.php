@@ -5,7 +5,7 @@ require_once 'Materia.php';
 
 class Profesor extends Conexion {
 
-    public $id, $nombre, $apellido, $materia_id;
+    public $id, $nombre, $apellido, $fecha_nacimiento, $materia_id, $created_at, $updated_at;
 
     public function create() {
         $this->conectar();

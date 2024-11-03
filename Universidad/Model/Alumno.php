@@ -5,7 +5,7 @@ require_once 'Materia.php';
 
 class Alumno extends Conexion {
 
-    public $id, $nombre, $apellido, $fecha_nacimiento, $materias_id;
+    public $id, $nombre, $apellido, $fecha_nacimiento, $curso_id, $created_at, $updated_at, $materias_id;
 
     public function create() {
         $this->conectar();
@@ -90,7 +90,6 @@ class Alumno extends Conexion {
             }
         }
     }
-    
 
     public function materias() {
         $this->conectar();
@@ -113,6 +112,13 @@ class Alumno extends Conexion {
         $result->execute();
         return $result->get_result();
          
+    }
+
+    public function edad(){        
+        $fechaNacimiento = new DateTime($this->fecha_nacimiento);
+        $fechaActual = new DateTime();
+        $edad = $fechaActual->diff($fechaNacimiento)->y;
+        return $edad;
     }
 
 }
