@@ -121,4 +121,21 @@ class Alumno extends Conexion {
         return $edad;
     }
 
+    public function ultimaVezEditado(){        
+        $fecha_ultima_edicion = new DateTime($this->updated_at);
+        $fechaActual = new DateTime(); 
+
+        // print_r($fechaActual->diff($fecha_ultima_edicion));
+
+        $ultima_edicion[0] = $fechaActual->diff($fecha_ultima_edicion)->y;
+        $ultima_edicion[1] = $fechaActual->diff($fecha_ultima_edicion)->m;
+        $ultima_edicion[2] = $fechaActual->diff($fecha_ultima_edicion)->d;
+        $ultima_edicion[3] = $fechaActual->diff($fecha_ultima_edicion)->h;
+        $ultima_edicion[4] = $fechaActual->diff($fecha_ultima_edicion)->i;
+
+        
+
+        return $ultima_edicion;
+    }
+
 }
