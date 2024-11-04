@@ -9,17 +9,17 @@ class Alumno extends Conexion {
 
     public function create() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?)");
-        $pre->bind_param("sss", $this->nombre, $this->apellido, $this->fecha_nacimiento);
+        $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, fecha_nacimiento, curso_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)");
+        $pre->bind_param("sssiss", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->curso_id, $this->created_at, $this->updated_at);
         $pre->execute();
 
         $alumno_id = mysqli_insert_id($this->con);
 
-        foreach ($this->materias_id as $materia_id) {
-            $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
-            $pre->bind_param("ii", $alumno_id, $materia_id);
-            $pre->execute();
-        }
+        // foreach ($this->materias_id as $materia_id) {
+        //     $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
+        //     $pre->bind_param("ii", $alumno_id, $materia_id);
+        //     $pre->execute();
+        // }
 
     }
 
@@ -137,5 +137,74 @@ class Alumno extends Conexion {
 
         return $ultima_edicion;
     }
+
+    public static function alumnosPorMes() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT MONTH(created_at) AS mes, COUNT(id) AS CantidadAlumnos FROM alumnos GROUP BY mes");
+        $result->execute();
+        
+        $valoresDb = $result->get_result();
+
+        $datos = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $datos[$i] = [
+                'mes' => $i,
+                'cantidad' => 0
+            ];
+        }
+
+        while ($row = $valoresDb->fetch_assoc()) {
+            $mes = (int) $row['mes'];
+            $cantidad = (int) $row['CantidadAlumnos'];
+            $datos[$mes]['cantidad'] = $cantidad;
+        }
+
+        return array_values($datos);
+    }
+
+    public function promedio(){
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT ROUND(AVG(numero), 2) AS Promedio FROM notas WHERE alumno_id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $row = $valoresDb->fetch_assoc();
+        return $row['Promedio'];
+    }
+
+    public static function allFPromedio() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos INNER JOIN notas on notas.alumno_id = alumnos.id GROUP BY alumnos.id ORDER BY ROUND(AVG(notas.numero), 2) DESC;");
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $alumnos = [];
+        while ($alumno = $valoresDb->fetch_object(Alumno::class)) {
+            $alumnos[] = $alumno;
+        }
+        return $alumnos;
+    }
+
+    public function curso(){
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT cursos.* FROM alumnos INNER JOIN cursos on alumnos.curso_id = cursos.id WHERE alumnos.id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $curso = $valoresDb->fetch_object(Curso::class);
+        return $curso;
+    }
+
+    public static function truncate() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 0");
+        $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.alumnos");
+        $result->execute();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
+    }
+
 
 }

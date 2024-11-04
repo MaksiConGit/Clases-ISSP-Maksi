@@ -18,10 +18,10 @@
     <meta name="author" content="Phoenixcoded" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="../Views/dist/assets/images/logo-solo.png" type="image/x-icon">
+    <link rel="icon" href="../Views/dashboard/dist/assets/images/logo-solo.png" type="image/x-icon">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="../Views/dist/assets/css/style.css">
+    <link rel="stylesheet" href="../Views/dashboard/dist/assets/css/style.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <!-- Cargar ApexCharts -->
@@ -44,14 +44,14 @@
 	<!-- [ Header ] start -->
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
-                <div class="m-r-30 m-l-30">
-                    <img src="../Views/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
+                <div class="m-r-10 m-l-30">
+                    <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
                 </div>
 
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav">
 						
-						<li class="nav-item p-0 m-r-25">
+						<li class="nav-item">
 							<div class="dropdown">
 								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
 									Dashboard
@@ -115,6 +115,50 @@
 								</div>
 							</div>
 						</li>
+                        <li class="nav-item">
+							<div class="dropdown mega-menu">
+								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+									Dev Options
+								</a>
+								<div class="dropdown-menu profile-notification ">
+									<div class="row no-gutters">
+										<div class="col">
+											<h6 class="mega-title">Rellenar</h6>
+											<ul class="pro-body">
+                                                <li><a href="../Seeders/materiaSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar materias (2)</a></li>
+												<li><a href="../Seeders/cursoSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar cursos (2)</a></li>
+												<li><a href="../Seeders/alumnoSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar alumnos (10)</a></li>
+												<li><a href="../Seeders/profesorSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar profesores (5)</a></li>
+												<li><a href="../Seeders/examenSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar exámenes (5)</a></li>
+												<li><a href="../Seeders/notaSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Generar notas (10)</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Vaciar</h6>
+											<ul class="pro-body">
+                                                <li><a href="../Seeders/alumnoTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar alumnos</a></li>
+												<li><a href="../Seeders/profesorTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar profesores</a></li>
+												<li><a href="../Seeders/cursoTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar cursos</a></li>
+                                                <li><a href="../Seeders/materiaTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar materias</a></li>
+												<li><a href="../Seeders/examenTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar exámenes</a></li>
+												<li><a href="../Seeders/notaTruncate.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar notas</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Extra</h6>
+											<ul class="pro-body">
+                                                <li><a href="../Seeders/fillTables.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Rellenar Base de Datos</a></li>
+                                                <li><a href="../Seeders/truncateTables.php" class="dropdown-item"><i class="feather icon-file-minus"></i> Vaciar Base de Datos</a></li>
+                                                <hr>
+                                                <li><a href="../Seeders/alumnoSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Base de Datos San Pablo</a></li>
+                                                <hr>
+                                                <li><a href="notasecret.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Opción secreta</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
 					</ul>
 					<ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -158,7 +202,7 @@
 
                     <div class="col-md-12 col-xl-4 col-12">
 
-                        <div class="card flat-card">
+                        <div class="card flat-card" style="height: 17rem;">
 
                             <div class="row-table">
 
@@ -168,7 +212,7 @@
                                             <!-- <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                               -->
                                               <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/question.png" alt="user image" class="wid-40">
+                                                <img src="../Views/dashboard/dist/assets/images/question.png" alt="user image" class="wid-40">
                                             </div>
                                         </div>
                                         <div class="col-sm-8 text-md-center">
@@ -183,7 +227,7 @@
                                         <div class="col-sm-4">
                                             <!-- <i class="icon feather icon-music text-c-red mb-1 d-block"></i> -->
                                             <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/writing.png" alt="user image" class="wid-40">
+                                                <img src="../Views/dashboard/dist/assets/images/writing.png" alt="user image" class="wid-40">
                                             </div>
                                         </div>
                                         <div class="col-sm-8 text-md-center">
@@ -195,16 +239,34 @@
                                 
                             </div>
 
-                            <div class="row-table br">
+                            <div class="row-table">
 
+                                                            
                                 <div class="col-sm-6 card-body br">
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <!-- <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i> -->
+                                            <div class="col-auto p-r-0">
+                                                <img src="../Views/dashboard/dist/assets/images/course.png" alt="user image" class="wid-40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 text-md-center">
+                                            <h5><?=count($cursos)?></h5>
+                                            <span>Cursos</span>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-sm-6 card-body">
 
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <!-- <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
                                               -->
                                               <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/book.png" alt="user image" class="wid-40">
+                                                <img src="../Views/dashboard/dist/assets/images/book.png" alt="user image" class="wid-40">
                                             </div>
                                         </div>
                                         <div class="col-sm-8 text-md-center">
@@ -214,23 +276,6 @@
                                     </div>
 
                                 </div>
-                                
-                                <div class="col-sm-6 card-body">
-
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <!-- <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i> -->
-                                            <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/sketch.png" alt="user image" class="wid-40">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-8 text-md-center">
-                                            <h5><?=count($examenes)?></h5>
-                                            <span>Exámenes</span>
-                                        </div>
-                                    </div>
-                                
-                                </div>
 
                                 
                             </div>
@@ -243,12 +288,12 @@
                                             <!-- <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                               -->
                                               <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/question.png" alt="user image" class="wid-40">
+                                                <img src="../Views/dashboard/dist/assets/images/sketch.png" alt="user image" class="wid-40">
                                             </div>
                                         </div>
                                         <div class="col-sm-8 text-md-center">
-                                            <h5><?= count($alumnos) ?></h5>
-                                            <span>Alumnos</span>
+                                            <h5><?= count($examenes) ?></h5>
+                                            <span>Exámenes</span>
                                         </div>
                                     </div>
                                 </div>
@@ -258,12 +303,12 @@
                                         <div class="col-sm-4">
                                             <!-- <i class="icon feather icon-music text-c-red mb-1 d-block"></i> -->
                                             <div class="col-auto p-r-0">
-                                                <img src="../Views/dist/assets/images/writing.png" alt="user image" class="wid-40">
+                                                <img src="../Views/dashboard/dist/assets/images/score.png" alt="user image" class="wid-40">
                                             </div>
                                         </div>
                                         <div class="col-sm-8 text-md-center">
-                                            <h5><?=count($profesores)?></h5>
-                                            <span>Profesores</span>
+                                            <h5><?=count($notas)?></h5>
+                                            <span>Notas</span>
                                         </div>
                                     </div>
                                 </div>
@@ -282,41 +327,176 @@
                     </div>
 
                     <div class="col-xl-4 col-md-12 m-r-15">
-                        <div class="card" style="height: 13rem; overflow-y: auto;">
-                            <div class="card-body">
+                        <div class="card" style="height: 17rem; overflow-y: auto;">
+                            <div class="card-body d-flex">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <h3>+20</h3>
+                                        <h3>
+                                        <?php
+                                        
+                                            if(($alumnos_mes[date('n')-1]['cantidad'] - $alumnos_mes[date('n')-2]['cantidad'] > 0)){
+                                                echo "+";
+                                            }
+                                        
+                                        ?>
+                                        <?=($alumnos_mes[date('n')-1]['cantidad'] - $alumnos_mes[date('n')-2]['cantidad'])?>
+                                        </h3>
                                         <h6 class="text-muted m-b-0">Alumnos<i class="fa fa-caret-up text-c-green m-l-10"></i></h6>
                                     </div>
                                     <div class="col-6">
                                         <div id="seo-chart2" class="d-flex align-items-end"></div>
+                                        <script>
+                                            $(function() {
+                                                var options = {
+                                                    chart: {
+                                                        type: 'bar',
+                                                        height: 70,
+                                                        sparkline: {
+                                                            enabled: true
+                                                        }
+                                                    },
+                                                    dataLabels: {
+                                                        enabled: false
+                                                    },
+                                                    colors: ["#2ecc71"],
+                                                    plotOptions: {
+                                                        bar: {
+                                                            columnWidth: '60%'
+                                                        }
+                                                    },
+                                                    series: [{
+                                                        data: [<?php foreach ($alumnos_mes as $alumno) {echo $alumno['cantidad'].', ';} ?>] // 12 datos, uno por cada mes
+                                                    }],
+                                                    xaxis: {
+                                                        categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                                                        labels: {
+                                                            show: true // Muestra las etiquetas de los meses
+                                                        },
+                                                        crosshairs: {
+                                                            width: 1
+                                                        }
+                                                    },
+                                                    tooltip: {
+                                                        fixed: {
+                                                            enabled: false
+                                                        },
+                                                        x: {
+                                                            show: true // Muestra el mes en el tooltip
+                                                        },
+                                                        y: {
+                                                            title: {
+                                                                formatter: function(seriesName) {
+                                                                    return 'Bounce Rate:';
+                                                                }
+                                                            }
+                                                        },
+                                                        marker: {
+                                                            show: false
+                                                        }
+                                                    }
+                                                };
+                                                
+                                                var chart = new ApexCharts(document.querySelector("#seo-chart2"), options);
+                                                chart.render();
+                                            });
+                                        </script>
+ 
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex">
                                 <div class="row align-items-center">
                                     <div class="col-6">
-                                        <h3>+1</h3>
+                                        <h3>
+                                        <?php
+                                        
+                                            if(($profesores_mes[date('n')-1]['cantidad'] - $profesores_mes[date('n')-2]['cantidad'] > 0)){
+                                                echo "+";
+                                            }
+                                        
+                                        ?>
+                                        <?=($profesores_mes[date('n')-1]['cantidad'] - $profesores_mes[date('n')-2]['cantidad'])?>
+                                        </h3>
                                         <h6 class="text-muted m-b-0">Profesor<i class="fa fa-caret-up text-c-green m-l-10"></i></h6>
                                     </div>
                                     <div class="col-6">
                                         <div id="seo-chart1" class="d-flex align-items-end"></div>
+                                         <script>
+                                            $(function() {
+                                                var options = {
+                                                    chart: {
+                                                        type: 'area',
+                                                        height: 70,
+                                                        sparkline: {
+                                                            enabled: true
+                                                        }
+                                                    },
+                                                    dataLabels: {
+                                                        enabled: false
+                                                    },
+                                                    colors: ["#1abc9c"],
+                                                    fill: {
+                                                        type: 'solid',
+                                                        opacity: 0.3
+                                                    },
+                                                    markers: {
+                                                        size: 2,
+                                                        opacity: 0.9,
+                                                        colors: "#1abc9c",
+                                                        strokeColor: "#1abc9c",
+                                                        strokeWidth: 2,
+                                                        hover: {
+                                                            size: 4
+                                                        }
+                                                    },
+                                                    stroke: {
+                                                        curve: 'straight',
+                                                        width: 3
+                                                    },
+                                                    series: [{
+                                                        name: 'series1',
+                                                        data: [<?php foreach ($profesores_mes as $profesor) {echo $profesor['cantidad'].', ';} ?>] // 12 datos, uno por cada mes
+                                                    }],
+                                                    xaxis: {
+                                                        categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                                                        labels: {
+                                                            show: true // Asegura que se muestren las etiquetas de los meses
+                                                        }
+                                                    },
+                                                    tooltip: {
+                                                        fixed: {
+                                                            enabled: false
+                                                        },
+                                                        x: {
+                                                            show: true // Muestra el nombre del mes en el tooltip
+                                                        },
+                                                        y: {
+                                                            title: {
+                                                                formatter: function(seriesName) {
+                                                                    return 'Visits:';
+                                                                }
+                                                            }
+                                                        },
+                                                        marker: {
+                                                            show: false
+                                                        }
+                                                    }
+                                                };
+                                                
+                                                var chart = new ApexCharts(document.querySelector("#seo-chart1"), options);
+                                                chart.render();
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card support-bar overflow-hidden col-xl-4 col-md-12">
+                    <div class="card support-bar overflow-hidden col-xl-4 col-md-12" style="height: 17rem;">
                         <div class="card-header">
                             <h5 class="">Promedio general de notas</h4>
                         </div>
-                        <!-- <div class="card-body pb-0">
-                            <h2 class="m-0"></h2>
-                            <span class="text-c-blue">Notas</span>
-                            <p class="mb-3 mt-3">Promedio general de notas.</p>
-                        </div> -->
 
                         <script>
                         'use strict';
@@ -342,7 +522,7 @@
                                 },
                                 series: [{
                                     name: "Promedio",
-                                    data: [10, 9, 8.65, 4.1, 9, 8.43, 9.44, 7, 5.9, 8.43, 9.76, 10] // Datos para cada mes
+                                    data: [<?php foreach ($promedio_general_mes as $promedio) {echo $promedio['promedio'].', ';} ?>] // Datos para cada mes
                                 }],
                                 xaxis: {
                                     categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
@@ -442,19 +622,19 @@
 
                                         <?php 
 
-                                        foreach ($alumnos as $alumno) { ?>
+                                        foreach ($alumnos_f_promedio as $alumno) { ?>
                                             <tr onclick="window.location.href='/../Controllers/indexAlumno.php'" style="cursor: pointer;">
                                             <td>
                                                 <div class="d-inline-block align-middle">
-                                                    <img src="../Views/dist/assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                                                    <img src="../Views/dashboard/dist/assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
                                                     <div class="d-inline-block">
                                                         <h6><?=$alumno->nombre.", ".$alumno->apellido?></h6>
                                                             <p class="text-muted m-b-0"><?=$alumno->edad()?> años</p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="text-center">9,86</td>
-                                            <td class="text-center"><label class="badge badge-light-primary">3°A</label></td>
+                                            <td class="text-center"><?= $alumno->promedio() ?></td>
+                                            <td class="text-center"><label class="badge badge-light-primary"><?= $alumno->curso()->nombre. '°' .strtoupper($alumno->curso()->division) ?></label></td>
                                         </tr>
 
                                     <?php } ?>
@@ -507,7 +687,7 @@
                         <div class="card-body" style="height: 20rem; overflow-y: auto;">
                             <div class="row m-b-20 received-chat">
                                 <div class="col-auto p-r-0">
-                                    <img src="../Views/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
+                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
                                 </div>
                                 <div class="col">
                                     <div class="msg">
@@ -524,18 +704,18 @@
                                     <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
                                 </div>
                                 <div class="col-auto p-l-0">
-                                    <img src="../Views/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
+                                    <img src="../Views/dashboard/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
                                 </div>
                             </div>
                             <div class="row m-b-20 received-chat">
                                 <div class="col-auto p-r-0">
-                                    <img src="../Views/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
+                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
                                 </div>
                                 <div class="col">
                                     <div class="msg">
                                         <p class="m-b-0">El alumno más viejo es Mauricio Rapari, quien tiene <b>50 años</b>.</p>
-                                        <!-- <img src="../Views/dist/assets/images/widget/dashborad-1.jpg" alt="">
-                                        <img src="../Views/dist/assets/images/widget/dashborad-3.jpg" alt=""> -->
+                                        <!-- <img src="../Views/dashboard/dist/assets/images/widget/dashborad-1.jpg" alt="">
+                                        <img src="../Views/dashboard/dist/assets/images/widget/dashborad-3.jpg" alt=""> -->
                                     </div>
                                     <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
                                 </div>
@@ -561,16 +741,16 @@
         </div>
     </div>
 
-    <script src="../Views/dist/assets/js/vendor-all.min.js"></script>
-    <script src="../Views/dist/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="../Views/dist/assets/js/pcoded.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/pcoded.min.js"></script>
 
 <!-- Apex Chart -->
-<script src="../Views/dist/assets/js/plugins/apexcharts.min.js"></script>
+<script src="../Views/dashboard/dist/assets/js/plugins/apexcharts.min.js"></script>
 
 
 <!-- custom-chart js -->
-<script src="../Views/dist/assets/js/pages/dashboard-main.js"></script>
+<script src="../Views/dashboard/dist/assets/js/pages/dashboard-main.js"></script>
 </body>
 
 </html>

@@ -103,6 +103,15 @@ class Materia extends Conexion {
             $tipo_materia = $valoresDb->fetch_object();
         return $tipo_materia ? $tipo_materia->tipo_materia : null;
     }
+
+    public static function truncate() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 0");
+        $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.materias");
+        $result->execute();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
+    }
     
 
 }

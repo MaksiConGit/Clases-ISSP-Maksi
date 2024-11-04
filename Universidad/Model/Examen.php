@@ -7,21 +7,12 @@ class Examen extends Conexion {
 
     public $id, $numero, $materia_id, $created_at, $updated_at;
 
-    // public function create() {
-    //     $this->conectar();
-    //     $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?)");
-    //     $pre->bind_param("sss", $this->nombre, $this->apellido, $this->fecha_nacimiento);
-    //     $pre->execute();
-
-    //     $alumno_id = mysqli_insert_id($this->con);
-
-    //     foreach ($this->materias_id as $materia_id) {
-    //         $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
-    //         $pre->bind_param("ii", $alumno_id, $materia_id);
-    //         $pre->execute();
-    //     }
-
-    // }
+    public function create() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "INSERT INTO examenes (numero, materia_id, created_at, updated_at) VALUES (?, ?, ?, ?)");
+        $pre->bind_param("iiss", $this->numero, $this->materia_id, $this->created_at, $this->updated_at);
+        $pre->execute();
+    }
 
     public static function all() {
         $conexion = new Conexion();
@@ -34,6 +25,15 @@ class Examen extends Conexion {
             $examenes[] = $examen;
         }
         return $examenes;
+    }
+
+    public static function truncate() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 0");
+        $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.examenes");
+        $result->execute();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
     }
 
     // public static function getById($id) {

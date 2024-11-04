@@ -7,6 +7,13 @@ class Nota extends Conexion {
 
     public $id, $examen_id, $alumno_id, $numero, $created_at, $updated_at;
 
+    public function create() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "INSERT INTO notas (examen_id, alumno_id, numero, created_at, updated_at) VALUES (?, ?, ?, ?, ?)");
+        $pre->bind_param("iiiss", $this->examen_id, $this->alumno_id, $this->numero, $this->created_at, $this->updated_at);
+        $pre->execute();
+    }
+
     public static function all() {
         $conexion = new Conexion();
         $conexion->conectar();
@@ -29,14 +36,31 @@ class Nota extends Conexion {
         $valoresDb = $result->get_result();
 
         $datos = [];
-        while ($row = $valoresDb->fetch_assoc()) {
-            $datos[] = [
-                'mes' => $row['mes'],
-                'promedio' => $row['NotaPromedio']
+
+        for ($i = 1; $i <= 12; $i++) {
+            $datos[$i] = [
+                'mes' => $i,
+                'promedio' => 0
             ];
         }
 
-        return $datos;
+        while ($row = $valoresDb->fetch_assoc()) {
+            $mes = (int) $row['mes'];
+            $promedio = (int) $row['NotaPromedio'];
+            $datos[$mes]['promedio'] = $promedio;
+        }
+
+        return array_values($datos);
+
+    }
+
+    public static function truncate() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 0");
+        $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.notas");
+        $result->execute();
+        mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
     }
 
     // public function create() {
