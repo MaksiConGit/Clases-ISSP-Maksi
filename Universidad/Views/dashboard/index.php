@@ -26,6 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <!-- Cargar ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     
 
@@ -45,7 +46,9 @@
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
                 <div class="m-r-10 m-l-30">
+                    <a href="indexdashboard.php">
                     <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
+                    </a>
                 </div>
 
 				<div class="collapse navbar-collapse">
@@ -666,7 +669,6 @@
                 </div>
 
                 <div class="container col-12">
-                
                     <div class="card chat-card">
                         <div class="card-header">
                             <h5>WirelessBot</h5>
@@ -684,53 +686,139 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="height: 20rem; overflow-y: auto;">
-                            <div class="row m-b-20 received-chat">
-                                <div class="col-auto p-r-0">
-                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
-                                </div>
-                                <div class="col">
-                                    <div class="msg">
-                                        <p class="m-b-0">Me llamo WirelessBot, ¡consultame sobre la base de datos de tu institución y te ayudaré con lo que pueda!</p>
+
+                        <div class="card-body chat-body" id="chatDisplay" style="height: 20rem; overflow-y: auto;">
+
+                            <div class="chat-messages">
+                                <div class="row m-b-20 received-chat">
+                                    <div class="col-auto p-r-0">
+                                        <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
                                     </div>
-                                    <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
+                                    <div class="col">
+                                        <div class="msg">
+                                            <p class="m-b-0">Me llamo WirelessBot, ¡consultame sobre la base de datos de tu institución y te ayudaré con lo que pueda!</p>
+                                        </div>
+                                        <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row m-b-20 send-chat">
-                                <div class="col">
-                                    <div class="msg">
-                                        <p class="m-b-0">¿Quién es y cuántos años tiene el alumno más viejo?</p>
-                                    </div>
-                                    <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
-                                </div>
-                                <div class="col-auto p-l-0">
-                                    <img src="../Views/dashboard/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
-                                </div>
-                            </div>
-                            <div class="row m-b-20 received-chat">
-                                <div class="col-auto p-r-0">
-                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
-                                </div>
-                                <div class="col">
-                                    <div class="msg">
-                                        <p class="m-b-0">El alumno más viejo es Mauricio Rapari, quien tiene <b>50 años</b>.</p>
-                                        <!-- <img src="../Views/dashboard/dist/assets/images/widget/dashborad-1.jpg" alt="">
-                                        <img src="../Views/dashboard/dist/assets/images/widget/dashborad-3.jpg" alt=""> -->
-                                    </div>
-                                    <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
-                                </div>
-                            </div>
-                            
+
                         </div>
+
                         <div class="input-group m-t-15 p-3">
-                            <input type="text" name="task-insert" class="form-control" id="Project" placeholder="Send message">
+                            <input type="text" name="task-insert" class="form-control" id="pregunta" placeholder="Send message">
                             <div class="input-group-append">
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" id="enviarPregunta">
                                     <i class="feather icon-message-circle"></i>
                                 </button>
                             </div>
                         </div>
+
                     </div>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                    $('#enviarPregunta').on('click', function (e) {
+                        e.preventDefault();
+                        sendMessage();
+                    });
+
+                    $('#pregunta').on('keydown', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault(); // Evita que se envíe un salto de línea
+                            sendMessage();
+                        }
+                    });
+
+                    function sendMessage() {
+                        let pregunta = $('#pregunta').val().trim();
+                        if (pregunta) {
+                            // Añadir la pregunta del usuario al contenedor específico de chat
+                            $('.chat-body').append(`
+                                <div class="row m-b-20 send-chat">
+                                    <div class="col">
+                                        <div class="msg">
+                                            <p class="m-b-0">${pregunta}</p>
+                                        </div>
+                                        <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
+                                    </div>
+                                    <div class="col-auto p-l-0">
+                                        <img src="../Views/dashboard/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
+                                    </div>
+                                </div>
+                            `);
+
+                            // Mostrar el GIF de "escribiendo..."
+                            $('.chat-body').append(`
+                                <div class="row m-b-20 received-chat typing-indicator">
+                                    <div class="col-auto p-r-0">
+                                        <img src="../Views/dashboard/dist/assets/images/bot.png" alt="bot image" class="img-radius wid-40">
+                                    </div>
+                                    <div class="col">
+                                        <div class="msg d-flex align-items-center m-0" style="width: 4rem; height: 3rem;">
+                                            <img src="../Views/dashboard/dist/assets/images/typing.gif" alt="Typing..." class="typing-gif" style="width: 3rem; height: auto;">
+                                        </div>
+                                    </div>
+                                </div>
+                            `);
+
+                            // Mueve el scroll hacia abajo después de agregar los mensajes
+                            scrollToBottom();
+
+                            // Enviar la pregunta a la API
+                            $.ajax({
+                                type: 'POST',
+                                url: 'procesar_pregunta.php',
+                                data: { pregunta: pregunta },
+                                success: function (response) {
+                                    // Reemplazar el GIF de "escribiendo..." con la respuesta del bot
+                                    $('.typing-indicator').remove(); // Eliminar el indicador de escritura
+                                    $('.chat-body').append(`
+                                        <div class="row m-b-20 received-chat">
+                                            <div class="col-auto p-r-0">
+                                                <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
+                                            </div>
+                                            <div class="col">
+                                                <div class="msg">
+                                                    <p class="m-b-0">${response}</p>
+                                                </div>
+                                                <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
+                                            </div>
+                                        </div>
+                                    `);
+
+                                    // Mueve el scroll hacia abajo después de agregar la respuesta
+                                    scrollToBottom();
+                                },
+                                error: function () {
+                                    // Manejar errores
+                                    alert('Ocurrió un error al procesar la pregunta. Inténtalo de nuevo.');
+                                }
+                            });
+
+                            // Limpiar el campo de entrada después de enviar la pregunta
+                            $('#pregunta').val('');
+                        }
+                    }
+
+                    function scrollToBottom() {
+                        let chatMessages = document.querySelector('.chat-body');
+                        if (chatMessages) {
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }
+                    }
+
+                    function getFormattedTime() {
+                        const now = new Date();
+                        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+                    }
+                });
+
+
+                </script>
+
                         <p class="text-muted m-b-0 text-center">
                             Aviso: Los resultados proporcionados por este chatbot pueden no ser precisos o completos. Por favor, verifica la información antes de tomar decisiones basadas en ella.
                         </p>
