@@ -13,9 +13,9 @@
 <div class="container d-flex justify-content-center align-items-center mt-4 col-12" style="min-height: calc(100vh - 120px);">
     <div class="container p-4 col-md-8 col-lg-10 border border-primary">
 
-        <form class="row g-3 needs-validation bg-border-warning" id="formulario1" method="POST"novalidate>
+        <!-- <form class="row g-3 needs-validation bg-border-warning" id="formulario1" method="POST"novalidate> -->
 
-          <h2 class="text-center">Examen 1</h2>
+          <h2 class="text-center">ChatBot</h2>
       
           <hr class="border-primary">
             
@@ -27,55 +27,94 @@
               <!-- <label for="" class="form-label" id="pregunta1">Respuesta alumno</label>
               <textarea type="text" class="form-control border-primary border-primary" name="respuesta_alumno"></textarea> -->
               <?php
+              
 
                 require '../vendor/autoload.php';
-                require_once __DIR__ .'/../Model/Alumno.php';
+                require_once __DIR__ .'/../Model/Materia.php';
                 require_once __DIR__ .'/../Model/Profesor.php';
                 require_once __DIR__ .'/../Model/TipoMateria.php';
                 require_once __DIR__ .'/../Model/Materia.php';
+                require_once __DIR__ .'/../Model/Nota.php';
+                require_once __DIR__ .'/../Model/Examen.php';
+
                 use GeminiAPI\Client;
                 use GeminiAPI\Resources\Parts\TextPart;
 
-                $fecha_de_hoy = date("F j, Y, g:i a");
-                $info[] = Alumno::all();
-                $info[] = Materia::all();
-                $info[] = TipoMateria::all();
-                $info[] = Profesor::all();
-                $stringJson = "";
+                $bd_pasada = false;
 
-                foreach ($info as $info) {
-                    $stringJson = $stringJson.json_encode($info);                
+                if ($bd_pasada == false) {
+                    $info[] = Alumno::all();
+                    $info[] = Materia::all();
+                    $info[] = TipoMateria::all();
+                    $stringJson = "";
+
+                    foreach ($info as $info) {
+                        $stringJson = $stringJson.json_encode($info);                
+                    }
+
+                    $client = new Client('AIzaSyCGrYpqrocQv-JVTSQG3AWtJMMCPaBI6Wc');
+                    $chat = $client->geminiPro()->startChat();
+
+                    $response = $chat->sendMessage(new TextPart("Te voy a enviar una base de datos de la cual sacarás los datos para actuar de la manera que te voy a decir más más adelante:
+                    
+                        Base de datos: ". $stringJson ."
+
+                    "));
+
+                    $info[] = Profesor::all();
+                    $info[] = Nota::all();
+                    $info[] = Examen::all();
+                    $stringJson = "";
+
+                    foreach ($info as $info) {
+                        $stringJson = $stringJson.json_encode($info);                
+                    }
+
+                    $response = $chat->sendMessage(new TextPart("Aquí está la segunda parte de la base de datos:
+                    
+                        Base de datos: ". $stringJson ."
+
+                    "));
+
+                    $fecha_de_hoy = date("F j, Y, g:i a");
+
+                    $response = $chat->sendMessage(
+
+                        new TextPart("Responda de forma breve y precisa a las consultas de un directivo de una institución escolar sobre los datos en la base de datos. Si la consulta no se relaciona con la información disponible en la base de datos, responda: 'La consulta no está relacionada a la base de datos.' Si la consulta es relevante pero no hay suficiente información para responder, indique: 'No hay suficiente información en la base de datos para responder su consulta.'
+    
+                        Fecha de hoy: '$fecha_de_hoy'
+    
+                        Actúe como un bot institucional, proporcionando únicamente la información relevante sin mostrar IDs ni datos técnicos innecesarios. Para consultas sobre datos cuantitativos, como el número de alumnos, realice los cálculos necesarios directamente. Diríjase al directivo en un tono formal, empleando el tratamiento de 'usted' en reconocimiento a su cargo.
+    
+                        Escriba la respuesta utilizando etiquetas HTML cuando sea necesario. Por ejemplo, para texto en negrita, utilice <b> en vez de **.")
+                    );
+
+                    $bd_pasada = true;
                 }
 
 
-                // $info = "";
-                
-                // foreach ($alumnos as $alumno) {
-                //     $info += "alumno_nombre: $alumno->nombre";
-                // }
+                $response = $chat->sendMessage(new TextPart('Qué sabor tiene la pizza con piña?'));
 
-
-                if (isset($_POST['enviar'])) {
-
-                    $pregunta = $_POST['pregunta'];
-
-
-                    $client = new Client('API-KEY');
-                    $response = $client->geminiPro()->generateContent(
-                        new TextPart("Responda de forma breve y precisa a las consultas de un directivo de una institución escolar sobre los datos en la base de datos. Si la consulta no se relaciona con la información disponible en la base de datos, responda: 'La consulta no está relacionada a la base de datos.' Si la consulta es relevante pero no hay suficiente información para responder, indique: 'No hay suficiente información en la base de datos para responder su consulta.'
-
-                        Base de datos: ". $stringJson ."
-                        Consulta del directivo: '$pregunta'
-                        Fecha de hoy: '$fecha_de_hoy'
-
-                        Actúe como un bot institucional, proporcionando únicamente la información relevante sin mostrar IDs ni datos técnicos innecesarios. Para consultas sobre datos cuantitativos, como el número de alumnos, realice los cálculos necesarios directamente. Diríjase al directivo en un tono formal, empleando el tratamiento de 'usted' en reconocimiento a su cargo.
-
-                        Escriba la respuesta utilizando etiquetas HTML cuando sea necesario. Por ejemplo, para texto en negrita, utilice <b> en vez de **."));
-                    
                 ?>
-                    <div class="alert alert-success" id="resultado" role="alert"><?=$response->text()?></div>
 
-                <?php } ?>
+                <div class="alert alert-success" id="resultado" role="alert"><?=$response->text()?></div>
+
+                <?php
+
+                $response = $chat->sendMessage(new TextPart('Cuántos alumnos existen?'));
+
+                ?>
+
+                <div class="alert alert-success" id="resultado" role="alert"><?=$response->text()?></div>
+
+                <?php
+
+                $response = $chat->sendMessage(new TextPart('Cuántos profesores existen?'));
+
+                ?>
+
+                <div class="alert alert-success" id="resultado" role="alert"><?=$response->text()?></div>
+
 
             </div>
               <div class="col-12 d-flex justify-content-end">
@@ -86,9 +125,7 @@
 
               </div>
               
-          </form>
-
-
+          <!-- </form> -->
 
         
       </div>
