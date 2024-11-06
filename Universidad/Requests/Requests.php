@@ -5,7 +5,7 @@
         $errores = [];
 
         foreach ($campos as $campo) {
-            if (empty($campo)) {
+            if (empty($campo) && !$campo === 0) {
                 $errores[] = "- Todos los campos son obligatorios.";
                 return $errores;
             }
