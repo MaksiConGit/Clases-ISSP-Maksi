@@ -55,16 +55,16 @@ class Curso extends Conexion {
         mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
     }
 
-    // public static function getById($id) {
-    //     $conexion = new Conexion();
-    //     $conexion->conectar();
-    //     $result = mysqli_prepare($conexion->con, "SELECT * FROM materias WHERE id = ?");
-    //     $result->bind_param("i", $id);
-    //     $result->execute();
-    //     $valorDb = $result->get_result();
-    //     $materia = $valorDb->fetch_object(Materia::class);
-    //     return $materia;
-    // }
+    public static function getById($id) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT * FROM cursos WHERE id = ?");
+        $result->bind_param("i", $id);
+        $result->execute();
+        $valorDb = $result->get_result();
+        $curso = $valorDb->fetch_object(Curso::class);
+        return $curso;
+    }
 
     // public function profesores() {
     //     $this->conectar();

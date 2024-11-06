@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>Flat Able - Premium Admin Template by Phoenixcoded</title>
+    <title>University Dashboard</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -22,7 +22,6 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="../Views/dashboard/dist/assets/css/style.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <!-- Cargar ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -101,7 +100,7 @@
 												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
 												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
 												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexMateria.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+												<li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
 											</ul>
 										</div>
 										<div class="col">

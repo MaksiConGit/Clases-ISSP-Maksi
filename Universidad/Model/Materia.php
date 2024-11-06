@@ -3,6 +3,7 @@
 require_once 'Conexion.php';
 require_once 'Alumno.php';
 require_once 'Profesor.php';
+require_once 'Curso.php';
 
 class Materia extends Conexion {
 
@@ -10,8 +11,8 @@ class Materia extends Conexion {
 
     public function create() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "INSERT INTO materias (nombre, tipo_materia_id) VALUES (?, ?)");
-        $pre->bind_param("si", $this->nombre, $this->tipo_materia_id);
+        $pre = mysqli_prepare($this->con, "INSERT INTO materias (nombre, tipo_materia_id, created_at, updated_at) VALUES (?, ?, ?, ?)");
+        $pre->bind_param("siss", $this->nombre, $this->tipo_materia_id, $this->created_at, $this->updated_at);
         $pre->execute();
     }
 
@@ -28,6 +29,61 @@ class Materia extends Conexion {
         }
         return $materias;
     }
+
+    public static function allPaginado($curso_id) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+
+        $paginas = [];
+
+        if ($curso_id) {
+
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM materias INNER JOIN curso_materia ON materias.id = curso_materia.materia_id INNER JOIN cursos ON curso_materia.curso_id = cursos.id WHERE cursos.id = 1 ORDER BY materias.nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_materias = $fila['total'];
+
+        }
+        else{
+
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM materias ORDER BY nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_materias = $fila['total'];
+
+        }
+
+        $cantidad_paginas = ceil($cantidad_materias / 9);
+
+
+        for ($i=0; $i < $cantidad_paginas; $i++) { 
+
+            $offset_value = 9 * $i;
+
+            if ($curso_id) {
+                $result = mysqli_prepare($conexion->con, "SELECT materias.* FROM materias INNER JOIN curso_materia ON materias.id = curso_materia.materia_id INNER JOIN cursos ON curso_materia.curso_id = cursos.id WHERE cursos.id = $curso_id ORDER BY materias.nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+            else{
+                $result = mysqli_prepare($conexion->con, "SELECT materias.* FROM materias ORDER BY materias.nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+
+            $result->execute();
+            $valoresDb = $result->get_result();
+    
+            $materias = [];
+            while ($materia = $valoresDb->fetch_object(Materia::class)) {
+                $materias[] = $materia;
+            }
+
+            $paginas[] = $materias;
+        }
+        
+
+        return $paginas;
+    }
+
 
     public static function getById($id) {
         $conexion = new Conexion();
@@ -111,6 +167,21 @@ class Materia extends Conexion {
         $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.materias");
         $result->execute();
         mysqli_query($conexion->con, "SET FOREIGN_KEY_CHECKS = 1");
+    }
+
+    public function cursos() {
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT cursos.* FROM materias INNER JOIN curso_materia ON materias.id = curso_materia.materia_id INNER JOIN cursos on curso_materia.curso_id = cursos.id WHERE materias.id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+
+        $alumnos = [];
+        while ($alumno = $valoresDb->fetch_object(Curso::class)) {
+            $alumnos[] = $alumno;
+        }
+
+        return $alumnos;
     }
     
 

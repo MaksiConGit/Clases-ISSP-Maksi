@@ -1,92 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
+    <title>University Dashboard</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+    <!-- Meta -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DataTables Server-side procesado con PHP y MYSQL</title>
-    <!-- DataTables CSS library -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="../Views/dashboard/dist/assets/images/logo-solo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
-    <!-- DataTables JS library -->
-    <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <!-- DataTables JBootstrap -->
-    <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <style type="text/css">
-        .bs-example {
-            margin: 20px;
-        }
-    </style>
+    <!-- vendor css -->
+    <link rel="stylesheet" href="../Views/dashboard/dist/assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <!-- Cargar ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    
+
 </head>
-
 <body>
-    <div class="bs-example">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <a href="../indexAlumno.php">Alumnos</a><span> | </span>
-                        <a href="../indexProfesor.php">Profesores</a><span> | </span>
-                        <span>Materias</span>
-                    </div>
-                    <div class="page-header clearfix">
-                        <a href="createMateria.php" class="btn btn-success float-right">Agregar Materia</a>
-                        <h2 class="pull-left">Lista de Materias</h2>
-                    </div>
-                    <table id="listaMaterias" class="table table-sm table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
-                                <th>Acciones</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php
-
-                            foreach ($materias as $materia) { ?>
-                                <tr>
-                                    <td><?= $materia->id; ?></td>
-                                    <td><?= $materia->nombre; ?></td>
-                                    <td><?= $materia->tipoMateria(); ?></td>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="editarMateria.php?id=<?= $materia->id; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                            <a href="eliminarMateria.php?id=<?= $materia->id; ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            
-                            <?php }
-
-                            ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+				
+                <div class="m-r-10 m-l-30">
+                    <a href="indexdashboard.php">
+                    <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
+                    </a>
                 </div>
+
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav">
+						
+						<li class="nav-item">
+							<div class="dropdown">
+								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+									Dashboard
+								</a>
+								<div class="dropdown-menu profile-notification ">
+									<ul class="pro-body">
+										<li><a href="../Controllers/createAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
+										<li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
+										<li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="dropdown mega-menu">
+								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+									Gestionar
+								</a>
+								<div class="dropdown-menu profile-notification ">
+									<div class="row no-gutters">
+										<div class="col">
+											<h6 class="mega-title">Alumnos</h6>
+											<ul class="pro-body">
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
+												<li><a href="indexAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+												<!-- <li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Modal</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Tabs & pills</a></li> -->
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Profesores</h6>
+											<ul class="pro-body">
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
+												<li><a href="indexProfesor.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Materias</h6>
+											<ul class="pro-body">
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
+												<li><a href="indexMateria.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Formularios</h6>
+											<ul class="pro-body">
+												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
+												<li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
+												<li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
+												<!-- <li><a href="#!" class="dropdown-item"><i class="feather icon-upload-cloud"></i> File upload</a></li>
+												<li><a href="#!" class="dropdown-item"><i class="feather icon-scissors"></i> Image cropper</a></li> -->
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+							<div class="search-bar">
+								<input type="text" class="form-control border-0 shadow-none" placeholder="Buscar">
+								<button type="button" class="close" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			
+	</header>
+    
+
+    <div class="container mt-5">
+
+        <div class="btn-group mb-2 mr-2 col-4 container">
+            <div class="col-5 m-r-10">
+            <h2>Materias</h2>
+            </div>
+
+            <div class="col-1">
+            <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
+            <div class="dropdown-menu">
+
+            <?php
+                foreach ($cursos as $curso) {
+
+                    if ($curso_seleccionado) {
+
+                        if ($curso->id != $curso_seleccionado->id) { ?>
+                            <a class="dropdown-item" href="indexMateria.php?pagina=1&curso_id=<?=$curso->id?>"><?=$curso->nombre . "°" . $curso->division?></a>
+                        <?php } ?>
+
+                    <?php }
+                    else { ?>
+
+                        <a class="dropdown-item" href="indexMateria.php?pagina=1&curso_id=<?=$curso->id?>"><?=$curso->nombre . "°" . $curso->division?></a>
+                        
+                    <?php } ?>
+                    
+                    
+            <?php } ?>
+            <a class="dropdown-item" href="indexMateria.php?pagina=1">Todos</a>
+            </div>
             </div>
         </div>
-    </div>
-</body>
-<script>
-    $(document).ready(function() {
-        $('#listaMaterias').DataTable({});
-    });
-</script>
 
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item <?= ($pagina <= 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexMateria.php?pagina=<?=$pagina-1?>">Previous</a>
+                </li>
+                
+                <?php
+                                    
+                    for ($i=1; $i <= count($paginas_materias); $i++) { ?> 
+                        
+                        <li class="page-item <?= ($i == $pagina) ? 'active' : '' ?>">
+
+                            <?php 
+
+                            if ($curso_seleccionado) { ?>
+                            
+                                <a class="page-link" href="indexMateria.php?pagina=<?=$i?>&curso_id=<?=$curso_seleccionado->id?>"><?=$i?></a>
+
+                            <?php }
+                            else { ?>
+                                <a class="page-link" href="indexMateria.php?pagina=<?=$i?>"><?=$i?></a>
+
+                            <?php }
+                            ?>
+
+                        </li>
+                    
+                <?php } ?>
+                
+                <li class="page-item <?= ($pagina == count($paginas_materias)) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexMateria.php?pagina=<?=$pagina+1?>">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+
+        <?php
+            
+            foreach ($paginas_materias[$pagina-1] as $materia) { ?>
+        
+            <div class="col-md-6 col-xl-4">
+                <a href="editarMateria.php?id=<?= $materia->id; ?>">
+
+
+                <div class="card">
+                    <img class="img-fluid card-img-top" src="../Images/física-e1534938838719.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><?=$materia->nombre?></h5>
+                        <p class="card-text mb-lg-2"><b>Tipo de materia: <?=$materia->tipoMateria()?></b></p>
+                        <p class="card-text mb-lg-2"><b>Cursos:
+                            <?php
+
+                            $ignorar_primero = false;
+                            foreach ($materia->cursos() as $curso) {
+                                echo $ignorar_primero ? ", " : '' ;
+                                echo $curso->nombre . "°" . $curso->division;
+                                $ignorar_primero = true;
+                            }
+
+                        ?></b></p>
+                        <p class="card-text"><small class="text-muted">Última vez editado <?=$materia->updated_at?></small></p>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <?php
+
+            } ?>
+
+
+        </div>
+
+        <div class="container p-3">
+            <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar alumno</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ¿Está seguro de que quiere eliminar el alumno <b>Maximiliano, Alcaraz</b>? Este cambio no podrá ser deshecho.
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Eliminar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Maximiliano, Alcaraz</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Escribir nombre y apellido:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Confirmar nombre y apellido:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Eliminar permanentemente</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/pcoded.min.js"></script>
+
+<!-- Apex Chart -->
+<script src="../Views/dashboard/dist/assets/js/plugins/apexcharts.min.js"></script>
+
+
+<!-- custom-chart js -->
+<script src="../Views/dashboard/dist/assets/js/pages/dashboard-main.js"></script>
+</body>
 </html>
