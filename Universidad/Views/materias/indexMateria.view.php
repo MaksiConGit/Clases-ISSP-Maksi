@@ -25,6 +25,7 @@
     <!-- Cargar ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-abc123xyz..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
 
@@ -32,7 +33,7 @@
 <body>
 
 <div class="loader-bg">
-		<div class="loader-track">
+<div class="loader-track">
 			<div class="loader-fill"></div>
 		</div>
 	</div>
@@ -59,9 +60,9 @@
 								</a>
 								<div class="dropdown-menu profile-notification ">
 									<ul class="pro-body">
-										<li><a href="../Controllers/createAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
-										<li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
-										<li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
+										<li><a href="indexDashboard.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
 									</ul>
 								</div>
 							</div>
@@ -76,40 +77,29 @@
 										<div class="col">
 											<h6 class="mega-title">Alumnos</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Modal</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Tabs & pills</a></li> -->
+												<li><a href="indexAlumno.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver alumnos</a></li>
+												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Profesores</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexProfesor.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Materias</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexMateria.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
 											</ul>
 										</div>
 										<div class="col">
-											<h6 class="mega-title">Formularios</h6>
+											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
-												<li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
-												<li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="feather icon-upload-cloud"></i> File upload</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="feather icon-scissors"></i> Image cropper</a></li> -->
+                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -137,12 +127,9 @@
     <div class="container mt-5">
 
         <div class="btn-group mb-2 mr-2 col-4 container">
-            <div class="col-5 m-r-10">
+            <div class="col-5 d-flex">
             <h2>Materias</h2>
-            </div>
-
-            <div class="col-1">
-            <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
+            <button class="btn  btn-primary dropdown-toggle m-l-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
             <div class="dropdown-menu">
 
             <?php
@@ -166,6 +153,7 @@
             <a class="dropdown-item" href="indexMateria.php?pagina=1">Todos</a>
             </div>
             </div>
+
         </div>
 
         <nav aria-label="Page navigation example">
@@ -243,21 +231,40 @@
 
         </div>
 
-        <div class="container p-3">
-            <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                <a class="page-link">Previous</a>
+                <li class="page-item <?= ($pagina <= 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexMateria.php?pagina=<?=$pagina-1?>">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                
+                <?php
+                                    
+                    for ($i=1; $i <= count($paginas_materias); $i++) { ?> 
+                        
+                        <li class="page-item <?= ($i == $pagina) ? 'active' : '' ?>">
+
+                            <?php 
+
+                            if ($curso_seleccionado) { ?>
+                            
+                                <a class="page-link" href="indexMateria.php?pagina=<?=$i?>&curso_id=<?=$curso_seleccionado->id?>"><?=$i?></a>
+
+                            <?php }
+                            else { ?>
+                                <a class="page-link" href="indexMateria.php?pagina=<?=$i?>"><?=$i?></a>
+
+                            <?php }
+                            ?>
+
+                        </li>
+                    
+                <?php } ?>
+                
+                <li class="page-item <?= ($pagina == count($paginas_materias)) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexMateria.php?pagina=<?=$pagina+1?>">Next</a>
                 </li>
             </ul>
-            </nav>
-        </div>
+        </nav>
 
     </div>
 
@@ -306,6 +313,8 @@
             </div>
         </div>
         </div>
+
+        <div class="fixed-button active"><a href="createMateria.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
 
         <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
     <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>

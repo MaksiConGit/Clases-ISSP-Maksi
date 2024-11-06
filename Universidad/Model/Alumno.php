@@ -36,6 +36,60 @@ class Alumno extends Conexion {
         return $alumnos;
     }
 
+    public static function allPaginado($curso_id) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+
+        $paginas = [];
+
+        if ($curso_id) {
+
+            // $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM profesores INNER JOIN curso_profesor ON profesores.id = curso_profesor.profesor_id INNER JOIN cursos ON curso_profesor.profesor_id = profesores.id WHERE profesores.id = 1 ORDER BY profesores.nombre ASC");
+            // $result->execute();
+            // $valoresDb = $result->get_result();
+            // $fila = $valoresDb->fetch_assoc();
+            // $cantidad_profesores = $fila['total'];
+
+        }
+        else{
+
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM alumnos ORDER BY nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_alumnos = $fila['total'];
+
+        }
+
+        $cantidad_paginas = ceil($cantidad_alumnos / 9);
+
+
+        for ($i=0; $i < $cantidad_paginas; $i++) { 
+
+            $offset_value = 9 * $i;
+
+            if ($curso_id) {
+                // $result = mysqli_prepare($conexion->con, "SELECT profesores.* FROM profesores INNER JOIN curso_profesor ON profesores.id = curso_profesor.profesor_id INNER JOIN cursos ON curso_profesor.profesor_id = profesores.id WHERE cursos.id = $curso_id ORDER BY profesores.nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+            else{
+                $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos ORDER BY alumnos.nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+
+            $result->execute();
+            $valoresDb = $result->get_result();
+    
+            $alumnos = [];
+            while ($alumno = $valoresDb->fetch_object(Alumno::class)) {
+                $alumnos[] = $alumno;
+            }
+
+            $paginas[] = $alumnos;
+        }
+        
+
+        return $paginas;
+    }
+
     public static function getById($id) {
         $conexion = new Conexion();
         $conexion->conectar();
@@ -65,30 +119,27 @@ class Alumno extends Conexion {
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id);
         $pre->execute();
     
-        // Obtener las materias actuales del alumno en un array
-        $materias_actuales = [];
-        $result = mysqli_query($this->con, "SELECT materia_id FROM alumno_materia WHERE alumno_id = $this->id");
-        while ($row = mysqli_fetch_assoc($result)) {
-            $materias_actuales[] = $row['materia_id'];
-        }
+        // $materias_actuales = [];
+        // $result = mysqli_query($this->con, "SELECT materia_id FROM alumno_materia WHERE alumno_id = $this->id");
+        // while ($row = mysqli_fetch_assoc($result)) {
+        //     $materias_actuales[] = $row['materia_id'];
+        // }
     
-        // Recorrer las materias seleccionadas para agregar las nuevas y mantener las existentes
-        foreach ($this->materias_id as $materia_id) {
-            if (!in_array($materia_id, $materias_actuales)) {
-                $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
-                $pre->bind_param("ii", $this->id, $materia_id);
-                $pre->execute();
-            }
-        }
+        // foreach ($this->materias_id as $materia_id) {
+        //     if (!in_array($materia_id, $materias_actuales)) {
+        //         $pre = mysqli_prepare($this->con, "INSERT INTO alumno_materia (alumno_id, materia_id) VALUES (?, ?)");
+        //         $pre->bind_param("ii", $this->id, $materia_id);
+        //         $pre->execute();
+        //     }
+        // }
     
-        // Eliminar las materias que ya no están seleccionadas
-        foreach ($materias_actuales as $materia_id_actual) {
-            if (!in_array($materia_id_actual, $this->materias_id)) {
-                $pre = mysqli_prepare($this->con, "DELETE FROM alumno_materia WHERE alumno_id = ? AND materia_id = ?");
-                $pre->bind_param("ii", $this->id, $materia_id_actual);
-                $pre->execute();
-            }
-        }
+        // foreach ($materias_actuales as $materia_id_actual) {
+        //     if (!in_array($materia_id_actual, $this->materias_id)) {
+        //         $pre = mysqli_prepare($this->con, "DELETE FROM alumno_materia WHERE alumno_id = ? AND materia_id = ?");
+        //         $pre->bind_param("ii", $this->id, $materia_id_actual);
+        //         $pre->execute();
+        //     }
+        // }
     }
 
     public function materias() {

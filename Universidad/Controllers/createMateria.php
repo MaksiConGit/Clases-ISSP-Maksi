@@ -7,6 +7,9 @@ require_once __DIR__ .'/../Requests/Requests.php';
 $nombre = "";
 $tipo_materia_id = "";
 $errores = [];
+$errores = [];
+$errores_nombre = [];
+$errores_tipo_materia = [];
 
 $tipos_materias = TipoMateria::all();
 
@@ -14,10 +17,18 @@ if(isset($_POST['enviarFormulario'])){
     $nombre = $_POST['nombre'];
     $tipo_materia_id = $_POST['tipo_materia_id'] ?? null;
 
-    $errores = array_merge(
-        camposVacios([$nombre, $tipo_materia_id]),
+    $errores_nombre = array_merge(
+        camposVacios([$nombre]),
         maxMin(['nombre' => $nombre]),
         soloLetras(['nombre' => $nombre]),
+    );
+
+    $errores_tipo_materia = array_merge(
+        camposVacios([$tipo_materia_id])
+    );
+
+    $errores = array_merge(
+        $errores_nombre, $errores_tipo_materia
     );
 
     if (empty($errores)) {
@@ -27,7 +38,7 @@ if(isset($_POST['enviarFormulario'])){
 
         $materia->create();
 
-        header('Location: indexMateria.php');
+        header('Location: indexMateria.php?pagina=1');
     }
 }
 

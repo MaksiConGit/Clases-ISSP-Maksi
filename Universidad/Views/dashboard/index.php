@@ -22,6 +22,7 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="../Views/dashboard/dist/assets/css/style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <!-- Cargar ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -77,40 +78,29 @@
 										<div class="col">
 											<h6 class="mega-title">Alumnos</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Modal</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Tabs & pills</a></li> -->
+												<li><a href="indexAlumno.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver alumnos</a></li>
+												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Profesores</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexProfesor.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Materias</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
 											</ul>
 										</div>
 										<div class="col">
-											<h6 class="mega-title">Formularios</h6>
+											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
-												<li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
-												<li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="feather icon-upload-cloud"></i> File upload</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="feather icon-scissors"></i> Image cropper</a></li> -->
+                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -154,7 +144,7 @@
                                                 <hr>
                                                 <li><a href="../Seeders/alumnoSeeder.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Base de Datos San Pablo</a></li>
                                                 <hr>
-                                                <li><a href="notasecret.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Opción secreta</a></li>
+                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Opción secreta</a></li>
 											</ul>
 										</div>
 									</div>

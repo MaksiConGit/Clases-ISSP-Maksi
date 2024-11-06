@@ -30,6 +30,7 @@
 
 </head>
 <body>
+<div class="loader-bg">
 <div class="loader-track">
 			<div class="loader-fill"></div>
 		</div>
@@ -57,9 +58,9 @@
 								</a>
 								<div class="dropdown-menu profile-notification ">
 									<ul class="pro-body">
-										<li><a href="../Controllers/createAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
-										<li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
-										<li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
+										<li><a href="indexDashboard.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
 									</ul>
 								</div>
 							</div>
@@ -74,40 +75,29 @@
 										<div class="col">
 											<h6 class="mega-title">Alumnos</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Modal</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> Tabs & pills</a></li> -->
+												<li><a href="indexAlumno.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver alumnos</a></li>
+												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Profesores</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexProfesor.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Materias</h6>
 											<ul class="pro-body">
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 1°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 2°</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="fas fa-circle"></i> 3°</a></li>
-												<li><a href="indexMateria.php" class="dropdown-item"><i class="fas fa-circle"></i> Todos</a></li>
+                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
 											</ul>
 										</div>
 										<div class="col">
-											<h6 class="mega-title">Formularios</h6>
+											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
-												<li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
-												<li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
-												<!-- <li><a href="#!" class="dropdown-item"><i class="feather icon-upload-cloud"></i> File upload</a></li>
-												<li><a href="#!" class="dropdown-item"><i class="feather icon-scissors"></i> Image cropper</a></li> -->
+                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -200,6 +190,7 @@
             </div>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Editar</button>
+            <a href="indexMateria.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
 
             <div class="col-xl-4 col-md-6">
                 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -225,51 +216,8 @@
     </div>
 </div>
 
+        <div class="fixed-button active"><a href="createMateria.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar alumno</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            ¿Está seguro de que quiere eliminar el alumno <b>Maximiliano, Alcaraz</b>? Este cambio no podrá ser deshecho.
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Eliminar</button>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Maximiliano, Alcaraz</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Escribir nombre y apellido:</label>
-                    <input type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Confirmar nombre y apellido:</label>
-                    <input type="text" class="form-control" id="recipient-name">
-                </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Eliminar permanentemente</button>
-            </div>
-            </div>
-        </div>
-        </div>
 
         <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
         <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>

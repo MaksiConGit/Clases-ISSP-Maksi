@@ -1,143 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="../../Images/icons8-colegio-96.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alumnos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>University Dashboard</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="../Views/dashboard/dist/assets/images/logo-solo.png" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="../Views/dashboard/dist/assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <!-- Cargar ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-abc123xyz..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark"">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-            <img src="../../Images/icons8-libros-94.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            Gestión Escolar
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Alumnos
+
+<div class="loader-bg">
+<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+				
+                <div class="m-r-10 m-l-30">
+                    <a href="indexdashboard.php">
+                    <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../alumnos/indexAlumno.view.html">1°</a></li>
-                        <li><a class="dropdown-item" href="../alumnos/indexAlumno.view.html">2°</a></li>
-                        <li><a class="dropdown-item" href="../alumnos/indexAlumno.view.html">3°</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../alumnos/indexAlumno.view.html">Ver todos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Profesores
-                    </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../profesores/indexProfesor.view.html">1°</a></li>
-                            <li><a class="dropdown-item" href="../profesores/indexProfesor.view.html">2°</a></li>
-                            <li><a class="dropdown-item" href="../profesores/indexProfesor.view.html">3°</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../profesores/indexProfesor.view.html">Ver todos</a></li>
-                        </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Materias
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../materias/indexMateria.view.html">1°</a></li>
-                        <li><a class="dropdown-item" href="../materias/indexMateria.view.html">2°</a></li>
-                        <li><a class="dropdown-item" href="../materias/indexMateria.view.html">3°</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../materias/indexMateria.view.html">Ver todos</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-            </div>
-        </div>
-        </nav>
+                </div>
+
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav">
+						
+						<li class="nav-item">
+							<div class="dropdown">
+								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+									Dashboard
+								</a>
+								<div class="dropdown-menu profile-notification ">
+									<ul class="pro-body">
+										<li><a href="indexDashboard.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="dropdown mega-menu">
+								<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+									Gestionar
+								</a>
+								<div class="dropdown-menu profile-notification ">
+									<div class="row no-gutters">
+										<div class="col">
+											<h6 class="mega-title">Alumnos</h6>
+											<ul class="pro-body">
+												<li><a href="indexAlumno.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver alumnos</a></li>
+												<li><a href="createAlumno.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir alumnos</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Profesores</h6>
+											<ul class="pro-body">
+                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Materias</h6>
+											<ul class="pro-body">
+                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
+											</ul>
+										</div>
+										<div class="col">
+											<h6 class="mega-title">Cursos</h6>
+											<ul class="pro-body">
+                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+							<div class="search-bar">
+								<input type="text" class="form-control border-0 shadow-none" placeholder="Buscar">
+								<button type="button" class="close" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			
+	</header>
+    
 
     <div class="container mt-5">
 
-        <h2>Alumnos
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">A</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">B</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">C</label>
-          </div>
-        </h2>
+        <div class="btn-group mb-2 mr-2 col-4 container">
+            <div class="col-5 d-flex">
+            <h2>Alumnos</h2>
+            <button class="btn  btn-primary dropdown-toggle m-l-20" disabled type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
+            <div class="dropdown-menu">
+
+            <?php
+                foreach ($cursos as $curso) {
+
+                    if ($curso_seleccionado) {
+
+                        if ($curso->id != $curso_seleccionado->id) { ?>
+                            <a class="dropdown-item" href="indexAlumno.php?pagina=1&curso_id=<?=$curso->id?>"><?=$curso->nombre . "°" . $curso->division?></a>
+                        <?php } ?>
+
+                    <?php }
+                    else { ?>
+
+                        <a class="dropdown-item" href="indexAlumno.php?pagina=1&curso_id=<?=$curso->id?>"><?=$curso->nombre . "°" . $curso->division?></a>
+                        
+                    <?php } ?>
+                    
+                    
+            <?php } ?>
+            <a class="dropdown-item" href="indexAlumno.php?pagina=1">Todos</a>
+            </div>
+            </div>
+
+        </div>
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                <a class="page-link">Previous</a>
+                <li class="page-item <?= ($pagina <= 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexAlumno.php?pagina=<?=$pagina-1?>">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                
+                <?php
+                                    
+                    for ($i=1; $i <= count($paginas_alumnos); $i++) { ?> 
+                        
+                        <li class="page-item <?= ($i == $pagina) ? 'active' : '' ?>">
+
+                            <?php 
+
+                            if ($curso_seleccionado) { ?>
+                            
+                                <a class="page-link" href="indexAlumno.php?pagina=<?=$i?>&curso_id=<?=$curso_seleccionado->id?>"><?=$i?></a>
+
+                            <?php }
+                            else { ?>
+                                <a class="page-link" href="indexAlumno.php?pagina=<?=$i?>"><?=$i?></a>
+
+                            <?php }
+                            ?>
+
+                        </li>
+                    
+                <?php } ?>
+                
+                <li class="page-item <?= ($pagina == count($paginas_alumnos)) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexAlumno.php?pagina=<?=$pagina+1?>">Next</a>
                 </li>
             </ul>
         </nav>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+
+        <?php
+            
+            foreach ($paginas_alumnos[$pagina-1] as $alumno) { ?>
+        
+            <div class="col-md-6 col-xl-4">
+                <a href="editarAlumno.php?id=<?= $alumno->id; ?>">
+
+
+                <div class="card">
+                    <!-- <img class="img-fluid card-img-top" src="../Images/física-e1534938838719.jpg" alt="Card image cap"> -->
+                    <div class="card-header">
+                    <h5 class="card-title"><?=$alumno->nombre.", ".$alumno->apellido?></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text mb-lg-2"><b>Promedio: <?=$alumno->promedio()?></b></p>
+                        <p class="card-text mb-lg-2"><b>Curso: <?=$alumno->curso()->nombre."°".$alumno->curso()->division?>
+                            <?php
+
+                            // $ignorar_primero = false;
+                            // foreach ($alumno->cursos() as $curso) {
+                            //     echo $ignorar_primero ? ", " : '' ;
+                            //     echo $curso->nombre . "°" . $curso->division;
+                            //     $ignorar_primero = true;
+                            // }
+
+                        ?>
+                        </b></p>
+                        <p class="card-text"><small class="text-muted">Última vez editado <?=$alumno->updated_at?></small></p>
+                    </div>
+                </div>
+                </a>
+            </div>
 
             <?php
-            
-                foreach ($alumnos as $alumno) { ?>
-                    
-                    <div class="col">
-                        <div class="card h-30">
-                        <div class="card-body">
-                            <h5 class="card-title mt-1"><?=$alumno->nombre.' '.$alumno->apellido?></h5>
-                            <p class="card-text mb-lg-2"><b>Edad:</b> <?=$alumno->edad()?> años</p>
-                            <p class="card-text mb-2"><b>Promedio:</b> 10</p>
-                            <a href="editAlumno.view.html" class="btn btn-primary">Editar</a>
-                            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</a>    
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Última vez editado: <?=$alumno->updated_at ?
-                            $alumno->ultimaVezEditado()[0] .':'. $alumno->ultimaVezEditado()[1] .':'. $alumno->ultimaVezEditado()[2] .':'. $alumno->ultimaVezEditado()[3] : 'Nunca'?></small>
-                        </div>
-                        </div>
-                    </div>
 
-                <?php } ?>
+            } ?>
+
 
         </div>
 
-        <div class="container p-3">
-            <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                <a class="page-link">Previous</a>
+                <li class="page-item <?= ($pagina <= 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexAlumno.php?pagina=<?=$pagina-1?>">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                
+                <?php
+                                    
+                    for ($i=1; $i <= count($paginas_alumnos); $i++) { ?> 
+                        
+                        <li class="page-item <?= ($i == $pagina) ? 'active' : '' ?>">
+
+                            <?php 
+
+                            if ($curso_seleccionado) { ?>
+                            
+                                <a class="page-link" href="indexAlumno.php?pagina=<?=$i?>&curso_id=<?=$curso_seleccionado->id?>"><?=$i?></a>
+
+                            <?php }
+                            else { ?>
+                                <a class="page-link" href="indexAlumno.php?pagina=<?=$i?>"><?=$i?></a>
+
+                            <?php }
+                            ?>
+
+                        </li>
+                    
+                <?php } ?>
+                
+                <li class="page-item <?= ($pagina == count($paginas_alumnos)) ? 'disabled' : '' ?>">
+                <a class="page-link" href="indexAlumno.php?pagina=<?=$pagina+1?>">Next</a>
                 </li>
             </ul>
-            </nav>
-        </div>
+        </nav>
 
     </div>
 
@@ -187,6 +317,17 @@
         </div>
         </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <div class="fixed-button active"><a href="createAlumno.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
+
+        <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../Views/dashboard/dist/assets/js/pcoded.min.js"></script>
+
+<!-- Apex Chart -->
+<script src="../Views/dashboard/dist/assets/js/plugins/apexcharts.min.js"></script>
+
+
+<!-- custom-chart js -->
+<script src="../Views/dashboard/dist/assets/js/pages/dashboard-main.js"></script>
 </body>
 </html>
