@@ -19,7 +19,7 @@ $errores = [];
 $errores_nombre = [];
 $errores_apellido = [];
 $errores_fecha_nacimiento = [];
-// $errores_cursos = [];
+$errores_curso = [];
 
 
 if(isset($_POST['actualizarDatos'])){
@@ -27,7 +27,7 @@ if(isset($_POST['actualizarDatos'])){
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    // $cursos_id = $_POST['cursos_id'];
+    $curso_id = $_POST['curso_id'];
 
     $errores_nombre = array_merge(
         camposVacios([$nombre]),
@@ -46,9 +46,9 @@ if(isset($_POST['actualizarDatos'])){
         fechaAntesDeHoy([$fecha_nacimiento])
     );
 
-    // $errores_cursos = array_merge(
-    //     camposVacios([$cursos_id])
-    // );
+    $errores_cursos = array_merge(
+        camposVacios([$curso_id])
+    );
 
     $errores = array_merge(
         $errores_nombre, $errores_apellido, $errores_fecha_nacimiento
@@ -59,7 +59,7 @@ if(isset($_POST['actualizarDatos'])){
         $alumno->nombre = $nombre;
         $alumno->apellido = $apellido;
         $alumno->fecha_nacimiento = $fecha_nacimiento;
-        // $alumno->cursos_id = $cursos_id;
+        $alumno->curso_id = $curso_id;
         $alumno->update();
 
         header('Location: indexAlumno.php?pagina=1');

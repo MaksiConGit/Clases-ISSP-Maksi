@@ -2,6 +2,7 @@
 
 require_once 'Conexion.php';
 require_once 'Materia.php';
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class Alumno extends Conexion {
 
@@ -44,11 +45,11 @@ class Alumno extends Conexion {
 
         if ($curso_id) {
 
-            // $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM profesores INNER JOIN curso_profesor ON profesores.id = curso_profesor.profesor_id INNER JOIN cursos ON curso_profesor.profesor_id = profesores.id WHERE profesores.id = 1 ORDER BY profesores.nombre ASC");
-            // $result->execute();
-            // $valoresDb = $result->get_result();
-            // $fila = $valoresDb->fetch_assoc();
-            // $cantidad_profesores = $fila['total'];
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM alumnos INNER JOIN cursos ON alumnos.curso_id = cursos.id WHERE cursos.id = $curso_id ORDER BY alumnos.nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_alumnos = $fila['total'];
 
         }
         else{
@@ -69,7 +70,7 @@ class Alumno extends Conexion {
             $offset_value = 9 * $i;
 
             if ($curso_id) {
-                // $result = mysqli_prepare($conexion->con, "SELECT profesores.* FROM profesores INNER JOIN curso_profesor ON profesores.id = curso_profesor.profesor_id INNER JOIN cursos ON curso_profesor.profesor_id = profesores.id WHERE cursos.id = $curso_id ORDER BY profesores.nombre ASC LIMIT 9 OFFSET $offset_value");
+                $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos INNER JOIN cursos ON alumnos.curso_id = cursos.id WHERE cursos.id = $curso_id ORDER BY alumnos.nombre ASC LIMIT 9 OFFSET $offset_value");
             }
             else{
                 $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos ORDER BY alumnos.nombre ASC LIMIT 9 OFFSET $offset_value");
@@ -89,6 +90,7 @@ class Alumno extends Conexion {
 
         return $paginas;
     }
+
 
     public static function getById($id) {
         $conexion = new Conexion();
@@ -115,8 +117,10 @@ class Alumno extends Conexion {
 
     public function update() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, fecha_nacimiento = ? WHERE id = ?");
-        $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id);
+        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, curso_id = ?, fecha_nacimiento = ?, updated_at = ? WHERE id = ?");
+        // $alumno->created_at = $faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d H:i:s');
+        $this->updated_at = date('Y-m-d H:i:s');
+        $pre->bind_param("ssissi", $this->nombre, $this->apellido, $this->curso_id, $this->fecha_nacimiento, $this->updated_at, $this->id);
         $pre->execute();
     
         // $materias_actuales = [];

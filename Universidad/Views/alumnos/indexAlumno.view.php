@@ -129,7 +129,7 @@
         <div class="btn-group mb-2 mr-2 col-4 container">
             <div class="col-5 d-flex">
             <h2>Alumnos</h2>
-            <button class="btn  btn-primary dropdown-toggle m-l-20" disabled type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
+            <button class="btn  btn-primary dropdown-toggle m-l-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
             <div class="dropdown-menu">
 
             <?php

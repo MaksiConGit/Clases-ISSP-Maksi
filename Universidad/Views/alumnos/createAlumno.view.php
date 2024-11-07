@@ -220,33 +220,43 @@
             </div>
 
             <div class="form-row">
-                <div class="col-md-6 mb-3 d-flex">
-
-                    <?php 
-
-                    foreach ($cursos as $indice => $curso) { ?>
-                        <div class="custom-control custom-checkbox mb-3">
-                            
-                            <input disabled type="checkbox" name="cursos_id[]"class="custom-control-input" id="customControlValidation<?=$indice?>">
-                            <label class="custom-control-label m-r-50" for="customControlValidation<?=$indice?>"><?=$curso->nombre."°".$curso->division?></label>
-                            
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom02">Curso</label>
+                    <select class="custom-select
+                    <?php
+                    if (isset($_POST['enviarFormulario'])) {
+                      if ($errores_curso) {
+                        echo 'is-invalid';
+                      }
+                      else{
+                        echo 'is-valid';
+                      }
+                    }
+                    ?>" name="curso_id" id="curso_id" required>
+                        <option value="" selected hidden>Curso</option>
+                        <?php foreach ($cursos as $curso) { ?>
+                            <option value="<?= $curso->id ?>" <?= ($curso->id == $curso_id) ? 'selected' : '' ?>>
+                                <?= $curso->nombre."°".$curso->division ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <?php foreach ($errores_curso as $error) { ?>
+                        <div class="invalid-feedback visible-feedback is_valid">
+                            <?= $error ?>
                         </div>
-                    <?php } ?>   
-                    
+                    <?php } ?>
                 </div>
-
-                                
             </div>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Editar</button>
-            <a href="indexProfesor.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Crear</button>
+            <a href="indexAlumno.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
 
             <div class="col-xl-4 col-md-6">
                 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere editar esta profesor?</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere crear esta alumno?</h5>
                             </div>
                             <div class="modal-body">
                                 <p class="mb-0">Los datos podrán ser modificados más adelante.</p>
@@ -265,19 +275,16 @@
     </div>
 </div>
 
-<div class="fixed-button active"><a href="createProfesor.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
+  <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
+  <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>
+  <script src="../Views/dashboard/dist/assets/js/pcoded.min.js"></script>
+
+  <!-- Apex Chart -->
+  <script src="../Views/dashboard/dist/assets/js/plugins/apexcharts.min.js"></script>
 
 
-        <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
-        <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>
-        <script src="../Views/dashboard/dist/assets/js/pcoded.min.js"></script>
-
-        <!-- Apex Chart -->
-        <script src="../Views/dashboard/dist/assets/js/plugins/apexcharts.min.js"></script>
-
-
-        <!-- custom-chart js -->
-        <script src="../Views/dashboard/dist/assets/js/pages/dashboard-main.js"></script>
+  <!-- custom-chart js -->
+  <script src="../Views/dashboard/dist/assets/js/pages/dashboard-main.js"></script>
 
 </body>
 </html>

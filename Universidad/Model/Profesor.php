@@ -2,6 +2,7 @@
 
 require_once 'Conexion.php';
 require_once 'Materia.php';
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class Profesor extends Conexion {
 

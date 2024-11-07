@@ -30,23 +30,20 @@
 
 </head>
 <body>
+
 <div class="loader-bg">
-<div class="loader-track">
-			<div class="loader-fill"></div>
-		</div>
-	</div>
-	<!-- [ Pre-loader ] End -->
-	<!-- [ navigation menu ] start -->
-	
-	<!-- [ navigation menu ] end -->
-	<!-- [ Header ] start -->
+  <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
-                <div class="m-r-10 m-l-30">
-                    <a href="indexdashboard.php">
-                    <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
-                    </a>
-                </div>
+        <div class="m-r-10 m-l-30">
+            <a href="indexdashboard.php">
+            <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
+            </a>
+        </div>
 
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav">
@@ -82,22 +79,22 @@
 										<div class="col">
 											<h6 class="mega-title">Profesores</h6>
 											<ul class="pro-body">
-                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
-                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
+                        <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                        <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Materias</h6>
 											<ul class="pro-body">
-                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
-                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
+                        <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                        <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
-                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+                          <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                          <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -106,7 +103,7 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+              <li class="nav-item">
 							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
 							<div class="search-bar">
 								<input type="text" class="form-control border-0 shadow-none" placeholder="Buscar">
@@ -220,26 +217,36 @@
             </div>
 
             <div class="form-row">
-                <div class="col-md-6 mb-3 d-flex">
-
-                    <?php 
-
-                    foreach ($cursos as $indice => $curso) { ?>
-                        <div class="custom-control custom-checkbox mb-3">
-                            
-                            <input disabled type="checkbox" name="cursos_id[]"class="custom-control-input" id="customControlValidation<?=$indice?>">
-                            <label class="custom-control-label m-r-50" for="customControlValidation<?=$indice?>"><?=$curso->nombre."°".$curso->division?></label>
-                            
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom02">Curso</label>
+                    <select class="custom-select
+                    <?php
+                    if (isset($_POST['actualizarDatos'])) {
+                      if ($errores_curso) {
+                        echo 'is-invalid';
+                      }
+                      else{
+                        echo 'is-valid';
+                      }
+                    }
+                    ?>" name="curso_id" id="curso_id" required>
+                        <?php foreach ($cursos as $curso) { ?>
+                            <option value="<?= $curso->id ?>" <?= ($curso->id == $curso_id) ? 'selected' : '' ?>>
+                                <?= $curso->nombre."°".$curso->division ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <?php foreach ($errores_curso as $error) { ?>
+                        <div class="invalid-feedback visible-feedback is_valid">
+                            <?= $error ?>
                         </div>
-                    <?php } ?>   
-                    
+                    <?php } ?>
                 </div>
-
-                                
             </div>
+            
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Editar</button>
-            <a href="indexProfesor.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
+            <a href="indexAlumno.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
 
             <div class="col-xl-4 col-md-6">
                 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

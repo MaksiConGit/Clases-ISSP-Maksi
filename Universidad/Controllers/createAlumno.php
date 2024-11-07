@@ -15,7 +15,7 @@ $errores = [];
 $errores_nombre = [];
 $errores_apellido = [];
 $errores_fecha_nacimiento = [];
-// $errores_cursos = [];
+$errores_curso = [];
 
 
 if(isset($_POST['enviarFormulario'])){
@@ -42,9 +42,9 @@ if(isset($_POST['enviarFormulario'])){
         fechaAntesDeHoy([$fecha_nacimiento])
     );
 
-    // $errores_cursos = array_merge(
-    //     camposVacios([$cursos_id])
-    // );
+    $errores_cursos = array_merge(
+        camposVacios([$curso_id])
+    );
 
     $errores = array_merge(
         $errores_nombre, $errores_apellido, $errores_fecha_nacimiento

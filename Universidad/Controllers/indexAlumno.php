@@ -14,6 +14,11 @@ else{
 
 if (isset($_GET['curso_id'])) {
     $curso_id = $_GET['curso_id'];
+    
+    if ($curso_id <= 0) {
+        header("Location: 404.php"); 
+    }
+
     $curso_seleccionado = Curso::getById($curso_id);
 }
 else{
@@ -42,7 +47,5 @@ if ($curso_id) {
         header("Location: 404.php"); 
     }
 }
-
-
 
 require_once __DIR__ .'/../Views/alumnos/indexAlumno.view.php';

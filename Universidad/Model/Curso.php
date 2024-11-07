@@ -3,6 +3,8 @@
 require_once 'Conexion.php';
 require_once 'Alumno.php';
 require_once 'Profesor.php';
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 
 class Curso extends Conexion {
 
