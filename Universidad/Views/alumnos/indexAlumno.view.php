@@ -208,7 +208,7 @@
                     <h5 class="card-title"><?=$alumno->nombre.", ".$alumno->apellido?></h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text mb-lg-2"><b>Promedio: <?=$alumno->promedio()?></b></p>
+                        <p class="card-text mb-lg-2"><b>Promedio: <?=$alumno->promedio() ? $alumno->promedio() : 'Sin notas'?></b></p>
                         <p class="card-text mb-lg-2"><b>Curso: <?= $alumno->curso() ? $alumno->curso()->nombre."°".$alumno->curso()->division : 'No asignado'?>
                             <?php
 
@@ -221,7 +221,7 @@
 
                         ?>
                         </b></p>
-                        <p class="card-text"><small class="text-muted">Última vez editado <?=$alumno->updated_at?></small></p>
+                        <p class="card-text"><small class="text-muted">Última vez editado: <?=$alumno->updated_at ? $alumno->updated_at : 'Nunca'?></small></p>
                     </div>
                 </div>
                 </a>

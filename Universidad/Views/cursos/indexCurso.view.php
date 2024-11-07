@@ -210,11 +210,17 @@
                         <p class="card-text mb-lg-2"><b>Materias: 
                             <?php
 
-                            $ignorar_primero = false;
-                            foreach ($curso->materias() as $materia) {
-                                echo $ignorar_primero ? ", " : '' ;
-                                echo $materia->nombre;
-                                $ignorar_primero = true;
+
+                            if ($curso->materias()) {
+                                $ignorar_primero = false;
+                                foreach ($curso->materias() as $materia) {
+                                    echo $ignorar_primero ? ", " : '' ;
+                                    echo $materia->nombre;
+                                    $ignorar_primero = true;
+                                }
+    
+                            }else {
+                                echo 'No asignado';
                             }
 
                         ?>

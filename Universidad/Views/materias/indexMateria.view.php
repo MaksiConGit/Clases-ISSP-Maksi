@@ -210,15 +210,20 @@
                         <p class="card-text mb-lg-2"><b>Cursos:
                             <?php
 
-                            $ignorar_primero = false;
-                            foreach ($materia->cursos() as $curso) {
-                                echo $ignorar_primero ? ", " : '' ;
-                                echo $curso->nombre . "°" . $curso->division;
-                                $ignorar_primero = true;
+                            if ($materia->cursos()) {
+                                $ignorar_primero = false;
+                                foreach ($materia->cursos() as $curso) {
+                                    echo $ignorar_primero ? ", " : '' ;
+                                    echo $curso->nombre . "°" . $curso->division;
+                                    $ignorar_primero = true;
+                                }
+                            }
+                            else{
+                                echo 'No asignado';
                             }
 
                         ?></b></p>
-                        <p class="card-text"><small class="text-muted">Última vez editado <?=$materia->updated_at?></small></p>
+                        <p class="card-text"><small class="text-muted">Última vez editado: <?=$materia->updated_at ? $materia->updated_at : 'Nunca'?></small></p>
                     </div>
                 </div>
                 </a>

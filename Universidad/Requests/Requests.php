@@ -54,15 +54,14 @@
         foreach ($campos as $nombre_campo => $valor_campo) {
 
             foreach (str_split($valor_campo) as $letra) {
-
                 if (!ctype_alpha($letra)) {
-                    if (!$letra == ' ') {
+                    if ($letra == " ") {
+
                     }
                     else{
                         $errores[] = "- El campo $nombre_campo debe estar conformado por letras.";
                         break;
                     }
-
                 }
             }
                 

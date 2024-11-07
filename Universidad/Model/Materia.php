@@ -138,8 +138,9 @@ class Materia extends Conexion {
 
     public function update() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE materias SET nombre = ?, tipo_materia_id = ? WHERE id = ?");
-        $pre->bind_param("sii", $this->nombre, $this->tipo_materia_id, $this->id);
+        $pre = mysqli_prepare($this->con, "UPDATE materias SET nombre = ?, tipo_materia_id = ?, updated_at = ? WHERE id = ?");
+        $this->updated_at = date('Y-m-d H:i:s');
+        $pre->bind_param("sisi", $this->nombre, $this->tipo_materia_id, $this->updated_at, $this->id);
         $pre->execute();
     }
 
