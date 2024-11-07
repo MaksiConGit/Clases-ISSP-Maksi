@@ -61,9 +61,9 @@
 								</a>
 								<div class="dropdown-menu profile-notification ">
 									<ul class="pro-body">
-										<li><a href="../Controllers/createAlumno.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
-										<li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
-										<li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
+										<li><a href="indexDashboard.php" class="dropdown-item"><i class="fas fa-circle"></i>General</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>Promedios</a></li>
+										<li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i>ChatBot</a></li>
 									</ul>
 								</div>
 							</div>
@@ -598,7 +598,7 @@
                                     <tbody>
                                         <?php 
                                         foreach ($alumnos_f_promedio as $alumno) { ?>
-                                            <tr onclick="window.location.href='/../Controllers/indexAlumno.php'" style="cursor: pointer;">
+                                            <tr onclick="window.location.href='editarAlumno.php?id=<?=$alumno->id?>'" style="cursor: pointer;">
                                             <td>
                                                 <div class="d-inline-block align-middle">
                                                     <img src="../Views/dashboard/dist/assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
@@ -609,7 +609,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-center"><?= $alumno->promedio() ?></td>
-                                            <td class="text-center"><label class="badge badge-light-primary"><?= $alumno->curso()->nombre. '°' .strtoupper($alumno->curso()->division) ?></label></td>
+                                            <td class="text-center"><label class="badge badge-light-primary"><?= $alumno->curso() ? $alumno->curso()->nombre. '°' .strtoupper($alumno->curso()->division) : 'No asignado' ?></label></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
