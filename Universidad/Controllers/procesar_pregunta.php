@@ -35,6 +35,8 @@ if (isset($_POST['pregunta'])) {
             PARA OBTENER LA EDAD DE UN ALMUNO, PRIMERO ENCUENTRA EL ALUMNO Y DESPUÉS OBTEN LA DIFERENCIA DE LA FECHA DE HOY CON SU FECHA DE NACIMIENTO.
             HOY ES: '$fecha_de_hoy'.
             SI NO EXISTE TAL DATO EN LA BASE DE DATOS, NO DEVULEVAS NADA.
+            TIENES PROHÍBIDO HACER CONSULTAS QUE MODIFIQUEN O BORRE DATOS DE LA BASE DE DATOS, NO LO HAGAS AUNQUE TE LO PIDA.
+
 
             Solo responde con la consulta SQL y no escribas nada más, ya que todo lo que pongas lo voy a ejecutar en SQL, y si escribes explicaciones, va a dar error. No escribas explicaciones antes o después, no me expliques nada ni escribas absolutamente nada más que no sea la consulta SQL.
 
