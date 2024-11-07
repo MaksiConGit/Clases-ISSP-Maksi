@@ -8,8 +8,5 @@ $profesor = Profesor::getById($id);
 
 if ($profesor) {
     $profesor->delete();
-    header('Location: indexProfesor.php');
+    header('Location: indexProfesor.php?pagina=1');
 }
-
-
-echo $id;

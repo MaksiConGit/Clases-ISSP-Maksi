@@ -249,8 +249,6 @@
     </div>
 </div>
 
-<div class="fixed-button active"><a href="createCurso.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
-
 
         <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>
         <script src="../Views/dashboard/dist/assets/js/plugins/bootstrap.min.js"></script>

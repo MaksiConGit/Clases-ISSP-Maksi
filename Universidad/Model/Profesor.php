@@ -121,9 +121,11 @@ class Profesor extends Conexion {
 
     public function delete() {
         $this->conectar();
+        mysqli_query($this->con, "SET FOREIGN_KEY_CHECKS = 0");
         $pre = mysqli_prepare($this->con, "DELETE FROM profesores WHERE id = ?");
         $pre->bind_param("i", $this->id);
         $pre->execute();
+        mysqli_query($this->con, "SET FOREIGN_KEY_CHECKS = 1");
     }
 
     public function update() {

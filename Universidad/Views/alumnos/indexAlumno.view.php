@@ -209,7 +209,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text mb-lg-2"><b>Promedio: <?=$alumno->promedio()?></b></p>
-                        <p class="card-text mb-lg-2"><b>Curso: <?=$alumno->curso()->nombre."°".$alumno->curso()->division?>
+                        <p class="card-text mb-lg-2"><b>Curso: <?= $alumno->curso() ? $alumno->curso()->nombre."°".$alumno->curso()->division : 'No asignado'?>
                             <?php
 
                             // $ignorar_primero = false;

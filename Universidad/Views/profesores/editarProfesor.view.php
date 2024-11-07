@@ -263,6 +263,7 @@
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Editar</button>
             <a href="indexProfesor.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
+            <button type="button" class="btn btn-outline-danger m-l-10" data-toggle="modal" data-target="#exampleModalCenter1">Eliminar</button>
 
             <div class="col-xl-4 col-md-6">
                 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -282,6 +283,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-4 col-md-6">
+                <div id="exampleModalCenter1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere eliminar este profesor?</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p class="mb-0">Los datos NO podrán ser modificados más adelante.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Descartar</button>
+                                <a href="eliminarProfesor.php?id=<?=$profesor->id?>" class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </form>
         

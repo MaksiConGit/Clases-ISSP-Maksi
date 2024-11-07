@@ -260,7 +260,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere editar esta profesor?</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere crear este profesor?</h5>
                             </div>
                             <div class="modal-body">
                                 <p class="mb-0">Los datos podrán ser modificados más adelante.</p>
