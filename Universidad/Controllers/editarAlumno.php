@@ -27,7 +27,7 @@ if(isset($_POST['actualizarDatos'])){
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    $curso_id = $_POST['curso_id'];
+    $curso_id = $_POST['curso_id'] ?? null;
 
     $errores_nombre = array_merge(
         camposVacios([$nombre]),

@@ -27,10 +27,12 @@ if(isset($_POST['actualizarDatos'])){
 
     $nombre = $_POST['nombre'];
     $division = $_POST['division'];
-    $materias_id = $_POST['materias_id'] ?? null;
+    $materias_id = $_POST['materias_id'] ?? [];
 
     $errores_nombre = array_merge(
-        camposVacios([$nombre])
+        camposVacios([$nombre]),
+        soloNumeros(['nombre' => $nombre]),
+        maxMin1(['nombre' => $nombre]),
     );
 
     $errores_division = array_merge(

@@ -29,6 +29,23 @@
 
         return $errores;
     }
+    
+    function maxMin1($campos){
+
+        $errores = [];
+
+        foreach ($campos as $nombre_campo => $valor_campo) {
+            if (strlen($valor_campo) < 1) {
+                $errores[] = "- El campo $nombre_campo debe tener mínimo 2 caracteres.";
+            }
+            elseif (strlen($valor_campo) >= 60 ) {
+                $errores[] = "- El campo $nombre_campo debe tener máximo 60 caracteres.";
+            }
+        }
+
+        return $errores;
+    }
+
 
     function soloLetras($campos){
 
@@ -38,9 +55,36 @@
 
             foreach (str_split($valor_campo) as $letra) {
 
-                if (!ctype_alpha($letra) && !' ') {
+                if (!ctype_alpha($letra)) {
+                    if (!$letra == ' ') {
+                    }
+                    else{
+                        $errores[] = "- El campo $nombre_campo debe estar conformado por letras.";
+                        break;
+                    }
+
+                }
+            }
+                
+        }
+
+        return $errores;
+    
+    }
+
+    function soloNumeros($campos){
+
+        $errores = [];
+
+        foreach ($campos as $nombre_campo => $valor_campo) {
+
+            foreach (str_split($valor_campo) as $letra) {
+
+                if (!ctype_digit($letra)) {
+
                     $errores[] = "- El campo $nombre_campo debe estar conformado por letras.";
                     break;
+
                 }
             }
                 

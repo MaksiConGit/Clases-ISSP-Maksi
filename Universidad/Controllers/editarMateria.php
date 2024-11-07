@@ -20,7 +20,7 @@ $errores_tipo_materia = [];
 if(isset($_POST['actualizarDatos'])){
 
     $nombre = $_POST['nombre'];
-    $tipo_materia_id = $_POST['tipo_materia_id'];
+    $tipo_materia_id = $_POST['tipo_materia_id'] ?? null;
 
     $errores_nombre = array_merge(
         camposVacios([$nombre]),
