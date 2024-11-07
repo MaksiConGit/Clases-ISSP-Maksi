@@ -232,7 +232,7 @@ class Alumno extends Conexion {
     public static function allFPromedio() {
         $conexion = new Conexion();
         $conexion->conectar();
-        $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos INNER JOIN notas on notas.alumno_id = alumnos.id GROUP BY alumnos.id ORDER BY ROUND(AVG(notas.numero), 2) DESC;");
+        $result = mysqli_prepare($conexion->con, "SELECT alumnos.* FROM alumnos INNER JOIN notas on notas.alumno_id = alumnos.id GROUP BY alumnos.id ORDER BY ROUND(AVG(notas.numero), 2) DESC LIMIT 10");
         $result->execute();
         $valoresDb = $result->get_result();
         $alumnos = [];

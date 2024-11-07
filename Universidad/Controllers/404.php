@@ -10,6 +10,7 @@
     <h1>ERROR 404</h1>
     <h2>ESTA PÁGINA NO EXISTE</h2>
     <h3>Si estás viendo esto es porque no hubo tiempo ni presupuesto para armar una página 404</h3>
+    <a href="indexDashboard.php">Volver al dashboard</a>
     
 </body>
 </html>

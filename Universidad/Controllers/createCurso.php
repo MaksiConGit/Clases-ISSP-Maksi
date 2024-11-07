@@ -26,7 +26,6 @@ if(isset($_POST['enviarFormulario'])){
 
     $errores_nombre = array_merge(
         camposVacios([$nombre]),
-        soloNumeros(['división' => $division]),
     );
 
     $errores_division = array_merge(

@@ -577,26 +577,11 @@
 
             </div>
 
-                <div class="container col-12 d-flex">
-
-
-                <div class="col-xl-6 col-md-12">
+            <div class="container col-12 d-flex">
+                <div class="col-12"> <!-- Cambiado de col-xl-6 col-md-12 a col-12 para ocupar todo el ancho -->
                     <div class="card table-card" style="height: 20rem; overflow-y: auto;">
                         <div class="card-header">
                             <h5>Mejores promedios</h5>
-                            <!-- <div class="card-header-right">
-                                <div class="btn-group card-option">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="feather icon-more-horizontal"></i>
-                                    </button>
-                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
-                                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
-                                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
-                                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
-                                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -611,9 +596,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <?php 
-
                                         foreach ($alumnos_f_promedio as $alumno) { ?>
                                             <tr onclick="window.location.href='/../Controllers/indexAlumno.php'" style="cursor: pointer;">
                                             <td>
@@ -621,94 +604,92 @@
                                                     <img src="../Views/dashboard/dist/assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
                                                     <div class="d-inline-block">
                                                         <h6><?=$alumno->nombre.", ".$alumno->apellido?></h6>
-                                                            <p class="text-muted m-b-0"><?=$alumno->edad()?> años</p>
+                                                        <p class="text-muted m-b-0"><?=$alumno->edad()?> años</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="text-center"><?= $alumno->promedio() ?></td>
                                             <td class="text-center"><label class="badge badge-light-primary"><?= $alumno->curso()->nombre. '°' .strtoupper($alumno->curso()->division) ?></label></td>
                                         </tr>
-
-                                    <?php } ?>
-
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        
                     </div>
-
                 </div>
-
-                <div class="col-xl-6 col-md-12">
-                    <div class="card" style="height: 20rem;">
-
-                        <div class="card-header" style="height: 4rem;">
-                            <h5 class="mb-4">Promedio de 2024</h4>
-                        </div>
-                        <div class="card-body" >
-                            <h5 class="mb-4">Maximiliano, Alcaraz</h5>
-                            <h5 class="text-c-green f-w-500"><i class="fa fa-caret-up m-r-15"></i> 2% más alto que el mes pasado</h3>
-                        </div>
-                        <div id="tot-lead" style="height:150px"></div>
-                    </div>
             </div>
 
-
-                </div>
-
-                <div class="container col-12">
-                    <div class="card chat-card">
-                        <div class="card-header">
-                            <h5>WirelessBot</h5>
-                            <div class="card-header-right">
-                                <div class="btn-group card-option">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="feather icon-more-horizontal"></i>
-                                    </button>
-                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
-                                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
-                                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
-                                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
-                                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="col-4">
+                <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" class="response-link">¿Quién es el profesor más anciano?</a>
+                            <hr>
+                            <a href="#" class="response-link">¿Quién es el alumno con mayor promedio?</a>
+                            <hr>
+                            <a href="#" class="response-link">¿Cuántos exámenes se tomaron?</a>
+                            <hr>
+                            <a href="#" class="response-link">¿Qué alumno se creó primero?</a>
                         </div>
-
-                        <div class="card-body chat-body" id="chatDisplay" style="height: 20rem; overflow-y: auto;">
-
-                            <div class="chat-messages">
-                                <div class="row m-b-20 received-chat">
-                                    <div class="col-auto p-r-0">
-                                        <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
-                                    </div>
-                                    <div class="col">
-                                        <div class="msg">
-                                            <p class="m-b-0">Me llamo WirelessBot, ¡consultame sobre la base de datos de tu institución y te ayudaré con lo que pueda!</p>
-                                        </div>
-                                        <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>10:20am</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="input-group m-t-15 p-3">
-                            <input type="text" name="task-insert" class="form-control" id="pregunta" placeholder="Send message">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" id="enviarPregunta">
-                                    <i class="feather icon-message-circle"></i>
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
+            </div>
 
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
-                    $(document).ready(function () {
+            <div class="container col-12">
+                <div class="card chat-card">
+                    <div class="card-header">
+                        <h5>WirelessBot</h5>
+
+                        <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">¿No sabes qué preguntarme?</a>
+
+                        <div class="card-header-right">
+                            <div class="btn-group card-option">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="feather icon-more-horizontal"></i>
+                                </button>
+                                <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                                    <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                                    <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                                    <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body chat-body" id="chatDisplay" style="height: 20rem; overflow-y: auto;">
+                        <div class="chat-messages">
+                            <div class="row m-b-20 received-chat">
+                                <div class="col-auto p-r-0">
+                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
+                                </div>
+                                <div class="col">
+                                    <div class="msg">
+                                        <p class="m-b-0">Me llamo WirelessBot, ¡consultame sobre la base de datos de tu institución y te ayudaré con lo que pueda!</p>
+                                    </div>
+                                    <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i><?=date('h:i a')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group m-t-15 p-3">
+                        <input type="text" name="task-insert" class="form-control" id="pregunta" placeholder="Send message">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="enviarPregunta">
+                                <i class="feather icon-message-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Manejador de eventos para enviar mensaje con Enter o click en el botón
                     $('#enviarPregunta').on('click', function (e) {
                         e.preventDefault();
                         sendMessage();
@@ -721,82 +702,102 @@
                         }
                     });
 
+                    // Manejador de eventos para las respuestas clickeadas
+                    $('.response-link').on('click', function (e) {
+                        e.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+                        let pregunta = $(this).text().trim(); // Obtener el texto de la respuesta
+                        sendQuestionToChat(pregunta);
+                        scrollPageToBottom();  // Desplazar la página al final después de agregar la pregunta
+                        scrollChatToBottom();  // Desplazar el scroll del chat también hacia abajo
+                    });
+
                     function sendMessage() {
                         let pregunta = $('#pregunta').val().trim();
                         if (pregunta) {
-                            // Añadir la pregunta del usuario al contenedor específico de chat
-                            $('.chat-body').append(`
-                                <div class="row m-b-20 send-chat">
-                                    <div class="col">
-                                        <div class="msg">
-                                            <p class="m-b-0">${pregunta}</p>
-                                        </div>
-                                        <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
-                                    </div>
-                                    <div class="col-auto p-l-0">
-                                        <img src="../Views/dashboard/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
-                                    </div>
-                                </div>
-                            `);
-
-                            // Mostrar el GIF de "escribiendo..."
-                            $('.chat-body').append(`
-                                <div class="row m-b-20 received-chat typing-indicator">
-                                    <div class="col-auto p-r-0">
-                                        <img src="../Views/dashboard/dist/assets/images/bot.png" alt="bot image" class="img-radius wid-40">
-                                    </div>
-                                    <div class="col">
-                                        <div class="msg d-flex align-items-center m-0" style="width: 4rem; height: 3rem;">
-                                            <img src="../Views/dashboard/dist/assets/images/typing.gif" alt="Typing..." class="typing-gif" style="width: 3rem; height: auto;">
-                                        </div>
-                                    </div>
-                                </div>
-                            `);
-
-                            // Mueve el scroll hacia abajo después de agregar los mensajes
-                            scrollToBottom();
-
-                            // Enviar la pregunta a la API
-                            $.ajax({
-                                type: 'POST',
-                                url: 'procesar_pregunta.php',
-                                data: { pregunta: pregunta },
-                                success: function (response) {
-                                    // Reemplazar el GIF de "escribiendo..." con la respuesta del bot
-                                    $('.typing-indicator').remove(); // Eliminar el indicador de escritura
-                                    $('.chat-body').append(`
-                                        <div class="row m-b-20 received-chat">
-                                            <div class="col-auto p-r-0">
-                                                <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
-                                            </div>
-                                            <div class="col">
-                                                <div class="msg">
-                                                    <p class="m-b-0">${response}</p>
-                                                </div>
-                                                <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
-                                            </div>
-                                        </div>
-                                    `);
-
-                                    // Mueve el scroll hacia abajo después de agregar la respuesta
-                                    scrollToBottom();
-                                },
-                                error: function () {
-                                    // Manejar errores
-                                    alert('Ocurrió un error al procesar la pregunta. Inténtalo de nuevo.');
-                                }
-                            });
-
-                            // Limpiar el campo de entrada después de enviar la pregunta
-                            $('#pregunta').val('');
+                            sendQuestionToChat(pregunta);
+                            scrollPageToBottom();  // Desplazar la página al final después de agregar la pregunta
+                            scrollChatToBottom();  // Desplazar el scroll del chat hacia abajo también
                         }
                     }
 
-                    function scrollToBottom() {
-                        let chatMessages = document.querySelector('.chat-body');
-                        if (chatMessages) {
-                            chatMessages.scrollTop = chatMessages.scrollHeight;
-                        }
+                    function sendQuestionToChat(pregunta) {
+                        // Añadir la pregunta del usuario al contenedor específico de chat
+                        $('.chat-body').append(`
+                            <div class="row m-b-20 send-chat">
+                                <div class="col">
+                                    <div class="msg">
+                                        <p class="m-b-0">${pregunta}</p>
+                                    </div>
+                                    <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
+                                </div>
+                                <div class="col-auto p-l-0">
+                                    <img src="../Views/dashboard/dist/assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40">
+                                </div>
+                            </div>
+                        `);
+
+                        $('.chat-body').append(`
+                            <div class="row m-b-20 received-chat typing-indicator">
+                                <div class="col-auto p-r-0">
+                                    <img src="../Views/dashboard/dist/assets/images/bot.png" alt="bot image" class="img-radius wid-40">
+                                </div>
+                                <div class="col-auto">
+                                    <div class="msg d-flex align-items-center m-0" style="height: 3rem;">
+                                        <div class="spinner-border" role="status" style="width: 1.5rem; height: 1.5rem;">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+
+                        // Mueve el scroll hacia abajo después de agregar los mensajes
+                        scrollPageToBottom();
+                        scrollChatToBottom();
+                        
+                        // Enviar la pregunta a la API
+                        $.ajax({
+                            type: 'POST',
+                            url: 'procesar_pregunta.php',
+                            data: { pregunta: pregunta },
+                            success: function (response) {
+                                // Reemplazar el GIF de "escribiendo..." con la respuesta del bot
+                                $('.typing-indicator').remove(); // Eliminar el indicador de escritura
+                                $('.chat-body').append(`
+                                    <div class="row m-b-20 received-chat">
+                                        <div class="col-auto p-r-0">
+                                            <img src="../Views/dashboard/dist/assets/images/bot.png" alt="user image" class="img-radius wid-40">
+                                        </div>
+                                        <div class="col">
+                                            <div class="msg">
+                                                <p class="m-b-0">${response}</p>
+                                            </div>
+                                            <p class="text-muted m-b-0"><i class="fa fa-clock-o m-r-10"></i>${getFormattedTime()}</p>
+                                        </div>
+                                    </div>
+                                `);
+
+                                // Mueve el scroll hacia abajo después de agregar la respuesta
+                                scrollPageToBottom();
+                                scrollChatToBottom();
+                            },
+                            error: function () {
+                                alert('Ocurrió un error al procesar la pregunta. Inténtalo de nuevo.');
+                            }
+                        });
+
+                        // Limpiar el campo de entrada después de enviar la pregunta
+                        $('#pregunta').val('');
+                    }
+
+                    function scrollPageToBottom() {
+                        // Desplazar la página al fondo
+                        $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                    }
+
+                    function scrollChatToBottom() {
+                        // Desplazar el chat hacia abajo
+                        $('#chatDisplay').animate({ scrollTop: $('#chatDisplay')[0].scrollHeight }, 'slow');
                     }
 
                     function getFormattedTime() {
@@ -804,13 +805,13 @@
                         return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
                     }
                 });
+            </script>
+
+            <p class="text-muted m-b-0 text-center">
+                Aviso: Los resultados proporcionados por este chatbot pueden no ser precisos o completos. Por favor, verifica la información antes de tomar decisiones basadas en ella.
+            </p>
 
 
-                </script>
-
-                        <p class="text-muted m-b-0 text-center">
-                            Aviso: Los resultados proporcionados por este chatbot pueden no ser precisos o completos. Por favor, verifica la información antes de tomar decisiones basadas en ella.
-                        </p>
                 </div>
                 </div>
 
