@@ -13,7 +13,7 @@ class Curso extends Conexion {
     public function create() {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "INSERT INTO cursos (nombre, division, created_at, updated_at) VALUES (?, ?, ?, ?)");
-        $pre->bind_param("siss", $this->nombre, $this->division, $this->created_at, $this->updated_at);
+        $pre->bind_param("isss", $this->nombre, $this->division, $this->created_at, $this->updated_at);
         $pre->execute();
 
         $this->id = mysqli_insert_id($this->con);
@@ -25,7 +25,6 @@ class Curso extends Conexion {
         }
 
     }
-
 
     public static function all() {
         $conexion = new Conexion();
@@ -48,9 +47,6 @@ class Curso extends Conexion {
         $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.curso_materia");
         $result->execute();
 
-        $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.curso_profesor");
-        $result->execute();
-
         $result = mysqli_prepare($conexion->con, "TRUNCATE TABLE issp.cursos");
         $result->execute();
 
@@ -67,6 +63,23 @@ class Curso extends Conexion {
         $curso = $valorDb->fetch_object(Curso::class);
         return $curso;
     }
+
+    public function materias() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN curso_materia ON curso_materia.materia_id = materias.id INNER JOIN cursos ON curso_materia.curso_id = cursos.id WHERE curso_id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+        $valoresDb = $pre->get_result();
+
+        $materias = [];
+        while ($materia = $valoresDb->fetch_object(Materia::class)) {
+            $materias[] = $materia;
+        }
+
+        return $materias;
+
+    }
+
 
     // public function profesores() {
     //     $this->conectar();

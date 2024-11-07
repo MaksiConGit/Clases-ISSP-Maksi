@@ -10,7 +10,11 @@ $profesor = Profesor::getById($id);
 $nombre = $profesor->nombre;
 $apellido = $profesor->apellido;
 $fecha_nacimiento = $profesor->fecha_nacimiento;
-$cursos_id = $profesor->cursos_id;
+$materias_id = [];
+
+foreach ($profesor->materias() as $materia) {
+    $materias_id[] = $materia->id;
+}
 
 $materias = Materia::all();
 $cursos = Curso::all();
@@ -27,7 +31,7 @@ if(isset($_POST['actualizarDatos'])){
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    $cursos_id = $_POST['cursos_id'];
+    $materias_id = $_POST['materias_id'];
 
     $errores_nombre = array_merge(
         camposVacios([$nombre]),
@@ -47,7 +51,7 @@ if(isset($_POST['actualizarDatos'])){
     );
 
     $errores_cursos = array_merge(
-        camposVacios([$cursos_id])
+        camposVacios([$materias_id])
     );
 
     $errores = array_merge(
@@ -59,7 +63,7 @@ if(isset($_POST['actualizarDatos'])){
         $profesor->nombre = $nombre;
         $profesor->apellido = $apellido;
         $profesor->fecha_nacimiento = $fecha_nacimiento;
-        $profesor->cursos_id = $cursos_id;
+        $profesor->materias_id = $materias_id;
         $profesor->update();
 
         header('Location: indexProfesor.php?pagina=1');

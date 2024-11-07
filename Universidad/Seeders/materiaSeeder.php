@@ -13,7 +13,7 @@ function materiaSeeder(){
         $materia->nombre = $faker->word();
         $materia->tipo_materia_id = $tipos_materias[$faker->numberBetween(0, count($tipos_materias)-1)]->id;
         $materia->created_at = $faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d H:i:s');
-        $materia->updated_at = $faker->dateTimeBetween($materia->created_at, '2024-12-31')->format('Y-m-d H:i:s');
+        $materia->updated_at = null;
 
         $materia->create();
     }

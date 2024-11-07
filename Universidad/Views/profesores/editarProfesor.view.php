@@ -219,24 +219,47 @@
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="col-md-6 mb-3 d-flex">
+            <div class="col-sm-12">
+				<h5 class="mb-3">Materias</h5>
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-3 col-sm-12">
+								<ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<li><a class="nav-link text-left active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Todas</a></li>
+								</ul>
+							</div>
+							<div class="col-md-9 col-sm-12">
+								<div class="tab-content" id="v-pills-tabContent">
+									<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                    <?php 
+                  <div class="d-flex flex-wrap col-12">
+                      <?php 
+                      foreach ($materias as $indice => $materia) { 
+                        $checked = '';
+                        foreach ($materias_id as $materia_id) {
 
-                    foreach ($cursos as $indice => $curso) { ?>
-                        <div class="custom-control custom-checkbox mb-3">
-                            
-                            <input type="checkbox" name="cursos_id[]"class="custom-control-input" id="customControlValidation<?=$indice?>">
-                            <label class="custom-control-label m-r-50" for="customControlValidation<?=$indice?>"><?=$curso->nombre."°".$curso->division?></label>
-                            
-                        </div>
-                    <?php } ?>   
-                    
-                </div>
+                          if ($materia_id == $materia->id) {
+                            $checked = 'checked';
+                          }
+                        }
 
-                                
-            </div>
+                        ?>
+                          <div class="custom-control custom-checkbox mb-3 col-6 col-md-4 col-lg-4">
+                              <input <?=$checked?> type="checkbox" name="materias_id[]" value="<?=$materia->id?>" class="custom-control-input" id="customControlValidation<?=$indice?>">
+                              <label data-toggle="tooltip" data-placement="top" title="Tipo: <?=$materia->tipoMateria()?>" class="custom-control-label" for="customControlValidation<?=$indice?>"><?=$materia->nombre?></label>
+                          </div>
+                      <?php } ?>   
+                  </div>
+
+								</div>
+                  
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Editar</button>
             <a href="indexProfesor.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>

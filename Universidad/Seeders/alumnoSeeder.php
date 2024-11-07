@@ -16,7 +16,7 @@ function alumnoSeeder(){
         $alumno->fecha_nacimiento = $faker->dateTimeBetween('-50 years', '-16 years')->format('Y-m-d');
         $alumno->curso_id = $cursos[$faker->numberBetween(0, count($cursos)-1)]->id;
         $alumno->created_at = $faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d H:i:s');
-        $alumno->updated_at = $faker->dateTimeBetween($alumno->created_at, '2024-12-31')->format('Y-m-d H:i:s');
+        $alumno->updated_at = null;
     
         $alumno->create();
     }

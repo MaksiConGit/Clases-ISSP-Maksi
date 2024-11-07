@@ -14,12 +14,18 @@ function profesorSeeder(){
         $profesor->apellido = $faker->lastName();
         $profesor->fecha_nacimiento = $faker->dateTimeBetween('-50 years', '-16 years')->format('Y-m-d');
 
-        for ($j=0; $j <= ($faker->numberBetween(1, count($cursos)-1)); $j++) { 
-            $profesor->cursos_id[] = $cursos[$faker->numberBetween(0, count($cursos)-1)]->id;
+        $profesor->materias_id = [];
+
+        for ($j = 0; $j <= $faker->numberBetween(1, count($cursos) - 1); $j++) { 
+            do {
+                $curso_id = $cursos[$faker->numberBetween(0, count($cursos) - 1)]->id;
+            } while (in_array($curso_id, $profesor->materias_id));
+        
+            $profesor->materias_id[] = $curso_id;
         }
 
         $profesor->created_at = $faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d H:i:s');
-        $profesor->updated_at = $faker->dateTimeBetween($profesor->created_at, '2024-12-31')->format('Y-m-d H:i:s');
+        $profesor->updated_at = null;
 
         $profesor->create();
     }

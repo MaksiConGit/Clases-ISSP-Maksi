@@ -39,7 +39,7 @@ class Materia extends Conexion {
 
         if ($curso_id) {
 
-            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM materias INNER JOIN curso_materia ON materias.id = curso_materia.materia_id INNER JOIN cursos ON curso_materia.curso_id = cursos.id WHERE cursos.id = 1 ORDER BY materias.nombre ASC");
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM materias INNER JOIN curso_materia ON materias.id = curso_materia.materia_id INNER JOIN cursos ON curso_materia.curso_id = cursos.id WHERE cursos.id = $curso_id ORDER BY materias.nombre ASC");
             $result->execute();
             $valoresDb = $result->get_result();
             $fila = $valoresDb->fetch_assoc();

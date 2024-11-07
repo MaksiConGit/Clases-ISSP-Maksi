@@ -37,11 +37,6 @@
 			<div class="loader-fill"></div>
 		</div>
 	</div>
-	<!-- [ Pre-loader ] End -->
-	<!-- [ navigation menu ] start -->
-	
-	<!-- [ navigation menu ] end -->
-	<!-- [ Header ] start -->
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
                 <div class="m-r-10 m-l-30">
@@ -129,7 +124,7 @@
         <div class="btn-group mb-2 mr-2 col-4 container">
             <div class="col-5 d-flex">
             <h2>Profesores</h2>
-            <button class="btn  btn-primary dropdown-toggle m-l-20" disabled type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
+            <button class="btn  btn-primary dropdown-toggle m-l-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $curso_seleccionado ? $curso_seleccionado->nombre . "°" . $curso_seleccionado->division : 'Cursos'?></button>
             <div class="dropdown-menu">
 
             <?php
@@ -208,20 +203,19 @@
                     <h5 class="card-title"><?=$profesor->nombre.", ".$profesor->apellido?></h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text mb-lg-2"><b>Materias: </b></p>
-                        <p class="card-text mb-lg-2"><b>Cursos:
+                        <p class="card-text mb-lg-2"><b>Materias: 
                             <?php
 
-                            // $ignorar_primero = false;
-                            // foreach ($profesor->cursos() as $curso) {
-                            //     echo $ignorar_primero ? ", " : '' ;
-                            //     echo $curso->nombre . "°" . $curso->division;
-                            //     $ignorar_primero = true;
-                            // }
+                            $ignorar_primero = false;
+                            foreach ($profesor->materias() as $materia) {
+                                echo $ignorar_primero ? ", " : '' ;
+                                echo $materia->nombre;
+                                $ignorar_primero = true;
+                            }
 
                         ?>
                         </b></p>
-                        <p class="card-text"><small class="text-muted">Última vez editado <?=$profesor->updated_at?></small></p>
+                        <p class="card-text"><small class="text-muted">Última vez editado: <?=$profesor->updated_at ? $profesor->updated_at : 'Nunca'?></small></p>
                     </div>
                 </div>
                 </a>
