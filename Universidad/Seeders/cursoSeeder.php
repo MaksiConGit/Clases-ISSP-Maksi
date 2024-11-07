@@ -28,7 +28,7 @@ function cursoSeeder(){
         }
 
         $curso->created_at = $faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d H:i:s');
-        $curso->updated_at = $faker->dateTimeBetween($curso->created_at, '2024-12-31')->format('Y-m-d H:i:s');
+        $curso->updated_at = null;
 
         $curso->create();
     }

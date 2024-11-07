@@ -80,6 +80,94 @@ class Curso extends Conexion {
 
     }
 
+    public static function años(){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result = mysqli_prepare($conexion->con, "SELECT nombre FROM cursos GROUP BY nombre ORDER BY nombre ASC");
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $años = [];
+        while ($fila = $valoresDb->fetch_assoc()) {
+            $años[] = $fila['nombre'];
+        }
+        return $años;
+    }
+
+
+    public static function allPaginado($año) {
+        $conexion = new Conexion();
+        $conexion->conectar();
+
+        $paginas = [];
+
+        if ($año) {
+
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM cursos WHERE nombre = $año ORDER BY nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_cursos = $fila['total'];
+
+        }
+        else{
+
+            $result = mysqli_prepare($conexion->con, "SELECT COUNT(*) AS total FROM cursos ORDER BY nombre ASC");
+            $result->execute();
+            $valoresDb = $result->get_result();
+            $fila = $valoresDb->fetch_assoc();
+            $cantidad_cursos = $fila['total'];
+
+        }
+
+        $cantidad_paginas = ceil($cantidad_cursos / 9);
+
+
+        for ($i=0; $i < $cantidad_paginas; $i++) { 
+
+            $offset_value = 9 * $i;
+
+            if ($año) {
+                $result = mysqli_prepare($conexion->con, "SELECT cursos.* FROM cursos WHERE nombre = $año ORDER BY nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+            else{
+                $result = mysqli_prepare($conexion->con, "SELECT cursos.* FROM cursos ORDER BY cursos.nombre ASC LIMIT 9 OFFSET $offset_value");
+            }
+
+            $result->execute();
+            $valoresDb = $result->get_result();
+    
+            $cursos = [];
+            while ($curso = $valoresDb->fetch_object(Curso::class)) {
+                $cursos[] = $curso;
+            }
+
+            $paginas[] = $cursos;
+        }
+        
+
+        return $paginas;
+    }
+
+
+    public function update() {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "UPDATE cursos SET nombre = ?, division = ?, updated_at = ? WHERE id = ?");
+        $this->updated_at = date('Y-m-d H:i:s');
+        $pre->bind_param("issi", $this->nombre, $this->division, $this->updated_at, $this->id);
+        $pre->execute();
+    
+        $pre = mysqli_prepare($this->con, "DELETE FROM curso_materia WHERE curso_id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+    
+        foreach ($this->materias_id as $materia_id) {
+            $pre = mysqli_prepare($this->con, "INSERT INTO curso_materia (curso_id, materia_id) VALUES (?, ?)");
+            $pre->bind_param("ii", $this->id, $materia_id);
+            $pre->execute();
+        }
+    }
+
+
 
     // public function profesores() {
     //     $this->conectar();
