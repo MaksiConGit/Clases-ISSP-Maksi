@@ -96,8 +96,8 @@
 										<div class="col">
 											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
-                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+                                                <li><a href="indexCurso.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="createCurso.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -128,7 +128,7 @@
 
   <div class="container d-flex justify-content-center align-items-center mt-4 col-8" style="min-height: calc(100vh - 120px);">
     <div class="container p-4 col-md-8 col-lg-10 border border-primary">
-        <h5>Crear profesor:</h5>
+        <h5>Crear curso:</h5>
         <hr>
         <form class="needs-validation" method="POST">
             <div class="form-row">
@@ -223,14 +223,14 @@
 			</div>
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Crear</button>
-            <a href="indexProfesor.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
+            <a href="indexCurso.php?pagina=1"><button type="button" class="btn btn-secondary m-l-10">Volver</button></a>
 
             <div class="col-xl-4 col-md-6">
                 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere editar esta profesor?</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle">¿Está seguro que quiere crear este curso?</h5>
                             </div>
                             <div class="modal-body">
                                 <p class="mb-0">Los datos podrán ser modificados más adelante.</p>

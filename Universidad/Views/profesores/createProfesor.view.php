@@ -96,8 +96,8 @@
 										<div class="col">
 											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
-                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+                                                <li><a href="indexCurso.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="createCurso.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -278,8 +278,6 @@
         
     </div>
 </div>
-
-<div class="fixed-button active"><a href="createProfesor.php" class="btn btn-md btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>');
 
 
         <script src="../Views/dashboard/dist/assets/js/vendor-all.min.js"></script>

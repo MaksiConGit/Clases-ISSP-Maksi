@@ -37,6 +37,11 @@
 			<div class="loader-fill"></div>
 		</div>
 	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
                 <div class="m-r-10 m-l-30">
@@ -93,8 +98,8 @@
 										<div class="col">
 											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-                                                <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
-                                                <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+                                                <li><a href="indexCurso.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="createCurso.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>

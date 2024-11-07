@@ -32,18 +32,22 @@
 <body>
 
 <div class="loader-bg">
-  <div class="loader-track">
-      <div class="loader-fill"></div>
-    </div>
-  </div>
-
+<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
 				
-        <div class="m-r-10 m-l-30">
-            <a href="indexdashboard.php">
-            <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
-            </a>
-        </div>
+                <div class="m-r-10 m-l-30">
+                    <a href="indexdashboard.php">
+                    <img src="../Views/dashboard/dist/assets/images/logo-yo1.png" alt="" width="100rem" class="logo">
+                    </a>
+                </div>
 
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav">
@@ -79,22 +83,22 @@
 										<div class="col">
 											<h6 class="mega-title">Profesores</h6>
 											<ul class="pro-body">
-                        <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
-                        <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
+                                                <li><a href="indexProfesor.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver profesores</a></li>
+                                                <li><a href="createProfesor.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir profesores</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Materias</h6>
 											<ul class="pro-body">
-                        <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
-                        <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
+                                                <li><a href="indexMateria.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver materias</a></li>
+                                                <li><a href="createMateria.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir materias</a></li>
 											</ul>
 										</div>
 										<div class="col">
 											<h6 class="mega-title">Cursos</h6>
 											<ul class="pro-body">
-                          <li><a href="404.php" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
-                          <li><a href="404.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
+                                                <li><a href="indexCurso.php?pagina=1" class="dropdown-item"><i class="fas fa-circle"></i> Ver cursos</a></li>
+                                                <li><a href="createCurso.php" class="dropdown-item"><i class="feather icon-file-plus"></i> Añadir cursos</a></li>
 											</ul>
 										</div>
 									</div>
@@ -103,7 +107,7 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav ml-auto">
-              <li class="nav-item">
+                        <li class="nav-item">
 							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
 							<div class="search-bar">
 								<input type="text" class="form-control border-0 shadow-none" placeholder="Buscar">

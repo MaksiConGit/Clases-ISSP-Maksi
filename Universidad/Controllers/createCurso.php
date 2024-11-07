@@ -25,7 +25,8 @@ if(isset($_POST['enviarFormulario'])){
     $materias_id = $_POST['materias_id'] ?? null;
 
     $errores_nombre = array_merge(
-        camposVacios([$nombre])
+        camposVacios([$nombre]),
+        soloNumeros(['división' => $division]),
     );
 
     $errores_division = array_merge(
