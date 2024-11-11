@@ -1,7 +1,11 @@
 {
+  "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.5.2"
+      "runtime": "vercel-php@0.6.0"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index.php" }
+  ]
 }
