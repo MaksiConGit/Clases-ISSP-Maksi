@@ -1,16 +1,15 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "api/*.php",
-        "use": "@vercel-php@0.6.0"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/indexDashboard",
-        "dest": "/api/indexDashboard.php"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/indexDashboard",
+      "dest": "/api/indexDashboard.php"
+    }
+  ]
+}
